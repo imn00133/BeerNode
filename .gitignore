@@ -1,0 +1,11 @@
+# pycharm
+/.idea/
+
+# VScode
+.vscode/
+
+# 가상환경설정
+/venv/
+
+# python cache
+__pycache__/
