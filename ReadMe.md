@@ -13,5 +13,10 @@
 
 
 ## 환경설정
+### python
 - python 3.8.7
-- Django 3.1.5
+- django 3.1.5
+- django-environ 0.4.5
+
+### django_environment
+- /env/environment_files

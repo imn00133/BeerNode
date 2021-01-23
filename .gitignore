@@ -9,3 +9,9 @@
 
 # python cache
 __pycache__/
+
+# sqlite
+db.sqlite3
+
+# env
+/env/
