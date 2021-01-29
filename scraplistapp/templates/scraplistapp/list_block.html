@@ -18,16 +18,19 @@
     <div>
         <div>
             <span>
-                <a href="scraplistapp:block" type="button">block</a>
+                <a href="{% url 'scraplistapp:block' %}">block</a>
             </span>
             <span>
-                <a href="scraplistapp:list" type="button">list</a>
+                <a href="{% url 'scraplistapp:oneline' %}">list</a>
+            </span>
+            <span>
+                <a href="{% url 'scraplistapp:detail' %}">detail</a>
             </span>
         </div>
     </div>
     <div>
         <div class="container">
-          <div class="item1">{% scrap.title %}</div>
+          <div class="item1">1</div>
           <div class="item2">2</div>
           <div class="item3">3</div>
           <div class="item4">4</div>
