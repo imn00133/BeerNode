@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+    <div>
+        <div>
+            <span>
+                <a href="{% url 'scraplistapp:block' %}" type="button">block</a>
+            </span>
+            <span>
+                <a href="{% url 'scraplistapp:list' %}" type="button">list</a>
+            </span>
+        </div>
+    </div>
+
+{% endblock %}
