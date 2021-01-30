@@ -17,6 +17,8 @@
 - python 3.8.7
 - django 3.1.5
 - django-environ 0.4.5
+- django-bootstrap4 2.3.1
+- Pillow 8.1.0
 
 ### django_environment
 - /env/environment_files
