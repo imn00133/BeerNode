@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h2>
+       맥주 이름: {{ target_beer.beer_name }}
+    </h2><hr>
+    <p>
+        장소: {{ target_beer.place }} <br>
+        맛: {{ target_beer.flavor }} <br>
+        본문: {{ target_beer.context }} <br>
+    </p>
+    <p>
+        사진: <img src="{{ target_beer.picture.url }}" alt="맥주 사진">
+    </p>
+</div>
+{% endblock %}
