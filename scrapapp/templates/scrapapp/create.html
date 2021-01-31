@@ -1,27 +1,20 @@
-<!DOCTYPE html>
-<html lang="ko">
+{% extends 'base.html' %}
 
-<head>
-
-</head>
-
-<body >
-
-    <hr>
+{% block content %}
+<hr>
 
     <div style="text-align:center; max-width: 500px; margin: 4rem auto">
         <div class="mb-4">
-            <h4>Create Scrap</h4>
+            <h4>맥주 등록</h4>
         </div>
         <form action="{% url 'scrapapp:create' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form }}
-            <input type="submit" class="btn btn-dark rounded-pill col-6 mt-3">
+            <table border="1">
+                {{ form }}
+            </table>
+            <input type="Submit" class="btn btn-dark rounded-pill col-6 mt-3">
         </form>
     </div>
 
-    <hr>
-
-</body>
-
-</html>
+<hr>
+{% endblock %}
