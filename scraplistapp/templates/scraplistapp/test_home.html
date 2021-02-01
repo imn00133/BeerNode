@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+    <div>
+        <div>
+            <h1>
+                Test.... Home....
+            </h1>
+        </div>
+        <div>
+            <h1>Scrapapp Test</h1>
+            <span>
+                <a href="{% url 'scrapapp:create' %}">Create</a>
+            </span>
+            <span>
+                <a href="{% url 'scrapapp:detail'  pk='1' %}">Detail</a>
+            </span>
+        </div>
+        <div>
+            <h1>Scraplistapp Test</h1>
+            <span>
+                <a href="{% url 'scraplistapp:block' %}">block</a>
+            </span>
+            <span>
+                <a href="{% url 'scraplistapp:oneline' %}">list</a>
+            </span>
+            <span>
+                <a href="{% url 'scraplistapp:detail' %}">detail</a>
+            </span>
+        </div>
+    </div>
+
+{% endblock %}
