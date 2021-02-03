@@ -23,5 +23,5 @@ urlpatterns = [
     path('scrap/', include('scrapapp.urls')),
     path('account/', include('accountapp.urls')),
     path('', TemplateView.as_view(
-        template_name='scraplistapp/test_home.html'), name='test_home'),
+        template_name='test_home.html'), name='test_home'),
 ]
