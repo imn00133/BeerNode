@@ -12,7 +12,8 @@ from scrapapp.models import Scrap
 
 
 def test(request):
-    return HttpResponse('test message')
+    scraps = Scrap.objects
+    return render(request, 'scrapapp/test.html', {'scraps':scraps})
 
 
 class ScrapCreateView(CreateView):

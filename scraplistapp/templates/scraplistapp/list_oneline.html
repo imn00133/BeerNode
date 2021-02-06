@@ -19,10 +19,18 @@
             </span>
         </div>
     </div>
+    <div style="display:block">
+        {% for scrap in scraps.all %}
+        <div>
+            <h4>
+                <a href="{% url 'scrapapp:test' %}">{{ scrap.beer_name }}</a>
+            </h4>
+        </div>
+        {% endfor %}
+    </div>
+
     <div>
-        <div style="display:block;"> {{ target_scrap.beer_name }}</div>
-        <div style="display:block;">oneline</div>
-        <div style="display:block;">online</div>
+        <a href="../../scrap/create/"><h2>Add New Beer</h2></a>
     </div>
 
 {% endblock %}
