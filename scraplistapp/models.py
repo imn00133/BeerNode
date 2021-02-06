@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -5,8 +6,10 @@ from scrapapp.models import Scrap
 
 
 class Scraplist(models.Model):
-    #user = models.OneToOneField(User, 머시기머시기
-    #나중에 User DB 만들어지면 해당 유저와 1:1 대응 필요
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='scraplist', default='')
     scrap = Scrap
+    context_object_name = 'target_scrap'
+    image = models.ImageField(upload_to='scraplist/', null=True)
+    message = models.CharField(max_length=20, null=True)
 
     # filter_option =
