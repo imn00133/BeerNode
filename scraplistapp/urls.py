@@ -10,4 +10,6 @@ urlpatterns = [
         template_name='scraplistapp/list_oneline.html'), name='oneline'),
     path('block/', TemplateView.as_view(
         template_name='scraplistapp/list_block.html'), name='block'),
+    path('home/', TemplateView.as_view(
+        template_name='scraplistapp/test_home.html'), name='test_home'),
 ]
