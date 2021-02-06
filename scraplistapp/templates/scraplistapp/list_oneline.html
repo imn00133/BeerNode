@@ -20,17 +20,18 @@
         </div>
     </div>
     <div style="display:block">
+        
         {% for scrap in scraps.all %}
         <div>
-            <h4>
-                <a href="{% url 'scrapapp:test' %}">{{ scrap.beer_name }}</a>
-            </h4>
+            <h6>
+                <a href="{% url 'scrapapp:detail' pk='1' %}">{{ scrap.beer_name }}</a>
+            </h6>
         </div>
         {% endfor %}
     </div>
 
     <div>
-        <a href="../../scrap/create/"><h2>Add New Beer</h2></a>
+        <a href="../../scrap/create/"><h4>Add New Beer</h4></a>
     </div>
 
 {% endblock %}

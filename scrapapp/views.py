@@ -19,7 +19,7 @@ def test(request):
 class ScrapCreateView(CreateView):
     model = Scrap
     form_class = ScrapCreationForm
-    success_url = reverse_lazy('scrapapp:test')
+    success_url = reverse_lazy('scraplistapp:oneline')
     template_name = 'scrapapp/create.html'
 
 
