@@ -23,6 +23,7 @@ class ScrapCreateView(CreateView):
     template_name = 'scrapapp/create.html'
 
 
+
 class ScrapDetailView(DetailView):
     model = Scrap
     context_object_name = 'target_beer'

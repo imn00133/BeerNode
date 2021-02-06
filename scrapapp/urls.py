@@ -1,6 +1,7 @@
 from django.conf.urls.static import static
 from django.urls import path
 from django.views.generic import TemplateView
+
 from beernode import settings
 from scrapapp.views import ScrapCreateView, test, ScrapDetailView
 

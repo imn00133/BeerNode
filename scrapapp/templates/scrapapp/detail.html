@@ -1,17 +1,34 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-<div>
-    <h2>
-       맥주 이름: {{ target_beer.beer_name }}
-    </h2><hr>
-    <p>
-        장소: {{ target_beer.place }} <br>
-        맛: {{ target_beer.flavor }} <br>
-        본문: {{ target_beer.context }} <br>
-    </p>
-    <p>
-        사진: <img src="{{ target_beer.picture.url }}" alt="맥주 사진">
-    </p>
-</div>
+<link rel="stylesheet" href="{% static 'css/detail.css' %}">
+<div class=main_content>
+        <div class=pic_taste>
+            <div id=picture>
+                <img src="{{ target_beer.picture.url }}" alt="맥주 사진" id="profile">
+            </div>
+            <div id=taste>
+                <p style="font-size: 1.5rem;">맛</p>
+                <ul>
+                    <li>{{ target_beer.flavor }}</li>
+                    <li>항목1</li>
+                    <li>항목2</li>
+                    <li>항목3</li>
+                    <li>항목4</li>
+                </ul>
+            </div>
+        </div>
+        <div class=content>
+            <div id=title>
+                <p>{{ target_beer.beer_name }}</p>
+            </div>
+            <div id=location>
+                <p>마신 장소: {{ target_beer.place }}</p>
+            </div>
+            <div id=text>
+                <p>{{ target_beer.context }}</p>
+            </div>
+        </div>
+    </div>
 {% endblock %}
