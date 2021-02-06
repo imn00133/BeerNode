@@ -14,6 +14,9 @@ __pycache__/
 ## collect static
 staticfiles/
 
+## test image
+/media/scrap/
+
 ## sqlite
 db.sqlite3
 

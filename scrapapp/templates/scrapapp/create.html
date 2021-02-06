@@ -9,10 +9,13 @@
     </div>
     <form action="{% url 'scrapapp:create' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form }}
+        <table border="1">
+            {{ form }}
+        </table>
         <input type="submit" class="btn btn-dark rounded-pill col-6 mt-3">
     </form>
 </div>
 <hr>
 
 {% endblock %}
+
