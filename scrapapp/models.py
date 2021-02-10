@@ -5,7 +5,7 @@ from django.db import models
 class Scrap(models.Model):
     # writer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, verbose_name='작성자')
     beer_name = models.CharField(max_length=128, verbose_name='맥주 이름')
-    # date = models.DateField(null=True, verbose_name='마신 날짜')
+    date = models.DateField(null=True, verbose_name='마신 날짜')
     place = models.CharField(max_length=128, verbose_name='장소')
     flavor = models.CharField(max_length=128, verbose_name='맛')
     context = models.TextField(verbose_name='내용')
