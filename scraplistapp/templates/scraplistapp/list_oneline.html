@@ -24,7 +24,7 @@
         {% for scrap in scraps.all %}
         <div>
             <h6>
-                <a href="{% url 'scrapapp:detail' pk='1' %}">{{ scrap.beer_name }}</a>
+                <a href="{% url 'scrapapp:detail' pk=scrap.pk %}">{{ scrap.beer_name }}</a>
             </h6>
         </div>
         {% endfor %}
