@@ -22,3 +22,6 @@
 
 ### django_environment
 - /env/environment_files
+- OS 환경변수로 production 상태 변경 가능
+  - PROD=True
+  - [prod/dev 환경 분리](https://github.com/imn00133/BeerNode/issues/55) 참고
