@@ -11,7 +11,7 @@
  * @param config - configuration object
  */
 var checkParams = function (config) {
-  var DEFAULT_GUTTER = 25;
+  var DEFAULT_GUTTER = 15;
   var booleanProps = ["useTransform", "center"];
 
 
@@ -277,9 +277,16 @@ MagicGrid.prototype.listen = function listen () {
 let magicGrid = new MagicGrid({
   container: '.container',
   animate: true,
-  gutter: 30,
+  gutter: 5,
   static: true,
   useMin: true
 });
+
+var masonrys = document.getElementsByTagName("img");
+for(let i=0;i<masonrys.length;i++){
+    masonrys[i].addEventListener('load', function(){
+        magicGrid.positionItems();
+    }, false)
+}
 
 magicGrid.listen();
