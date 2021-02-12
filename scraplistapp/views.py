@@ -21,10 +21,5 @@ class ScraplistDetailView(DetailView):
 
 class ScraplistListView(ListView):
     model = Scrap
-    one = 1
     context_object_name = 'scrap_list'
     template_name = 'scraplistapp/list.html'
-
-def notshow(request):
-    one = 0
-    return HttpResponse(one)
