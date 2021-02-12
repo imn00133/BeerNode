@@ -14,16 +14,23 @@ from pathlib import Path
 import os
 import environ
 
-env = environ.Env(
-    DEBUG=(bool, False)
-)
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# 환경설정 확인
+if os.environ['PROD'] == 'False':
+    env_path = 'env/.env_dev'
+else:
+    env_path = 'env/.env_prod'
+
+env = environ.Env(
+    DEBUG=(bool, False),
+    ALLOW_HOSTS=(list, False)
+)
+
 # reading .env file
 environ.Env.read_env(
-    env_file=os.path.join(BASE_DIR, 'env/.env_dev')
+    env_file=os.path.join(BASE_DIR, env_path)
 )
 
 # Quick-start development settings - unsuitable for production
@@ -35,7 +42,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env('ALLOW_HOSTS')
 
 
 # Application definition
@@ -88,11 +95,11 @@ WSGI_APPLICATION = 'beernode.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': env.db()
 }
+
+if os.environ['PROD'] == 'False':
+    DATABASES['default']['NAME'] = BASE_DIR / 'db.sqlite3'
 
 
 # Password validation
