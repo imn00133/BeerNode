@@ -10,7 +10,7 @@ from django.views.generic import CreateView, DetailView
 class AccountCreateView(CreateView):
     model = User
     form_class = UserCreationForm
-    success_url = reverse_lazy('scraplistapp:test_home')
+    success_url = reverse_lazy('test_home')
     template_name = 'accountapp/create.html'
 
 
