@@ -24,7 +24,8 @@ else:
     env_path = 'env/.env_prod'
 
 env = environ.Env(
-    DEBUG=(bool, False)
+    DEBUG=(bool, False),
+    ALLOW_HOSTS=(list, False)
 )
 
 # reading .env file
@@ -41,7 +42,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env('ALLOW_HOSTS')
 
 
 # Application definition
