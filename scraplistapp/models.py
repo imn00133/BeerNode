@@ -7,8 +7,7 @@ from scrapapp.models import Scrap
 
 class Scraplist(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='scraplist', default='')
-    scrap = Scrap
-    context_object_name = 'target_scrap'
+    scrap = models.ManyToManyField(Scrap)
     image = models.ImageField(upload_to='scraplist/', null=True)
     message = models.CharField(max_length=20, null=True)
 

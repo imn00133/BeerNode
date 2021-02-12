@@ -6,6 +6,6 @@ from scraplistapp.models import Scraplist
 class ScraplistCreationForm(ModelForm):
     class Meta:
         model = Scraplist
-        fields = ['image', 'message']
+        fields = ['image', 'scrap', 'message']
 
 

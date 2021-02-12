@@ -3,19 +3,34 @@
 {% load bootstrap4 %}
 
 {% block content %}
+    <style>
+        .nav{
+            display:flex;
+            flex-direction:row;
+            justify-content: center;
+        }
 
+    </style>
     <div>
-        <div>
-            <span>
+        <div class="nav">
+            <span style="margin: 1rem">
                 <a href="{% url 'scraplistapp:block' %}">block</a>
             </span>
-            <span>
+            <span style="margin: 1rem">
                 <a href="{% url 'scraplistapp:oneline' %}">list</a>
             </span>
-            <span>
+            <span style="margin: 1rem">
                 <a href="{% url 'scraplistapp:detail' %}">detail</a>
             </span>
         </div>
     </div>
-
+    <div>
+        hello
+        hi
+        {% for scrap in object_list %}
+            <h1>call</h1>
+            <h1>{{ scrap.beer_name }}</h1>
+            <img src="{{ scrap.image.url }}" alt="">
+        {% endfor %}
+    </div>
 {% endblock %}
