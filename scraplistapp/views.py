@@ -8,6 +8,8 @@ from django.views.generic import DetailView, ListView
 from scrapapp.models import Scrap
 from scraplistapp.models import Scraplist
 
+global one
+
 def oneline(request):
     scraps = Scrap.objects
     return render(request, 'scraplistapp/list_oneline.html', {'scraps':scraps})
@@ -17,7 +19,12 @@ class ScraplistDetailView(DetailView):
     context_object_name = 'target_scraplist'
     template_name = 'scraplistapp/list.html'
 
-    def get_context_data(self, **kwargs):
-        object_list = Scrap.objects.filter(project=self.get_object())
-        return super(ScraplistDetailView, self).get_context_data(
-            object_list=object_list, **kwargs)
+class ScraplistListView(ListView):
+    model = Scrap
+    one = 1
+    context_object_name = 'scrap_list'
+    template_name = 'scraplistapp/list.html'
+
+def notshow(request):
+    one = 0
+    return HttpResponse(one)
