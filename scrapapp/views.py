@@ -4,8 +4,8 @@ from django.http import HttpResponse, request
 from django.shortcuts import render
 
 # Create your views here.
-from django.urls import reverse_lazy
-from django.views.generic import CreateView, DetailView
+from django.urls import reverse_lazy, reverse
+from django.views.generic import CreateView, DetailView, UpdateView
 
 from scrapapp.forms import ScrapCreationForm
 from scrapapp.models import Scrap
@@ -28,3 +28,13 @@ class ScrapDetailView(DetailView):
     model = Scrap
     context_object_name = 'target_beer'
     template_name = 'scrapapp/detail.html'
+
+
+class ScrapUpdateView(UpdateView):
+    model = Scrap
+    context_object_name = 'target_scrap'
+    form_class = ScrapCreationForm
+    template_name = 'scrapapp/update.html'
+
+    def get_success_url(self):
+        return reverse('scrapapp:detail', kwargs={'pk': self.object.pk})
