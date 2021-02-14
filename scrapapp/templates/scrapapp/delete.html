@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div style="text-align:center; max-width: 500px; margin: 4rem auto">
+    <div class="mb-4">
+        <h4>Delete Scrap</h4>
+    </div>
+    <form action="{% url 'scrapapp:delete' pk=target_beer.pk %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-dark rounded-pill col-6 mt-3" value="Delete">
+    </form>
+</div>
+<hr>
+
+{% endblock %}
+
