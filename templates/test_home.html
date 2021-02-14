@@ -14,28 +14,6 @@
 
     <div class="main">
         <div>
-            <h1>
-                Test.... Home....
-            </h1>
-        </div>
-        <div>
-            {% if not user.is_authenticated %}
-            <span>
-                <a href="{% url 'accountapp:login' %}?next={{ request.path }}">Login</a>
-            </span>
-            <span>
-                <a href="{% url 'accountapp:create' %}">Create account</a>
-            </span>
-            {% else %}
-            <span>
-                <a href="{% url 'accountapp:detail' pk=user.pk %}">Mypage</a>
-            </span>
-            <span>
-                <a href="{% url 'accountapp:logout' %}?next={{ request.path }}">Logout</a>
-            </span>
-            {% endif %}
-        </div>
-        <div>
             <h1>Scrapapp Test</h1>
             <span>
                 <a href="{% url 'scrapapp:create' %}">Create</a>
