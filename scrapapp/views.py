@@ -32,7 +32,7 @@ class ScrapDetailView(DetailView):
 
 class ScrapUpdateView(UpdateView):
     model = Scrap
-    context_object_name = 'target_scrap'
+    context_object_name = 'target_beer'
     form_class = ScrapCreationForm
     template_name = 'scrapapp/update.html'
 
