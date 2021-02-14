@@ -16,8 +16,28 @@
 <div>
     <h1 id="main_logo">
         <a href="/">
-            Beernode
+            BeerNode
         </a>
     </h1>
+    <center>
+            {% if not user.is_authenticated %}
+            <span>
+                <a href="{% url 'accountapp:login' %}?next={{ request.path }}">Login</a>
+            </span>
+            <span>
+                <a href="{% url 'accountapp:create' %}">Create account</a>
+            </span>
+            {% else %}
+            <span>
+                <strong>{{ user.username }}</strong>
+            </span>
+            <span>
+                <a href="{% url 'accountapp:detail' pk=user.pk %}">Mypage</a>
+            </span>
+            <span>
+                <a href="{% url 'accountapp:logout' %}?next={{ request.path }}">Logout</a>
+            </span>
+            {% endif %}
+        </center>
     <hr>
 </div>
