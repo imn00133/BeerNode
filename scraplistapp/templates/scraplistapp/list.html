@@ -77,10 +77,18 @@
                 <th scope="col">created date</th>
             </thread>
             {% if scrap_list %}
+            <script>
+                var i=1;
+            </script>
             {% for scrap in object_list %}
                 <tbody>
                     <tr>
-                        <th scope="row">{{ scrap.pk }}</th>
+                        <th scope="row">
+                            <script>
+                                 document.write(i);
+                                 i++;
+                            </script>
+                        </th>
                         <td><a href="{% url 'scrapapp:detail' pk=scrap.pk %}">{{ scrap.beer_name }}</a></td>
                         <td>{{ scrap.date }}</td>
                         <td>{{ scrap.place }}</td>
