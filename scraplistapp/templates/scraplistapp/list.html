@@ -84,8 +84,8 @@
                         <td><a href="{% url 'scrapapp:detail' pk=scrap.pk %}">{{ scrap.beer_name }}</a></td>
                         <td>{{ scrap.date }}</td>
                         <td>{{ scrap.place }}</td>
-                        <td>{{ context }}</td>
-                        <td>{{ create_at }}</td>
+                        <td>{{ scrap.context }}</td>
+                        <td>{{ scrap.create_at }}</td>
                     </tr>
                 </tbody>
             {% endfor %}
