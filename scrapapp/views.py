@@ -1,6 +1,3 @@
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
-from django.http import HttpResponse, request
 from django.shortcuts import render
 
 # Create your views here.
@@ -21,6 +18,12 @@ class ScrapCreateView(CreateView):
     form_class = ScrapCreationForm
     success_url = reverse_lazy('scraplistapp:list')
     template_name = 'scrapapp/create.html'
+
+    def form_valid(self, form):
+        temp = form.save(commit=False)
+        temp.writer = self.request.user
+        temp.save
+        return super().form_valid(form)
 
 
 class ScrapDetailView(DetailView):

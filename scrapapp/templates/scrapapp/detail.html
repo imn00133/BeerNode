@@ -6,7 +6,9 @@
 <div class=main_content>
         <div class=pic_taste>
             <div id=picture>
+                {% if target_beer.picture %}
                 <img src="{{ target_beer.picture.url }}" alt="맥주 사진" id="profile">
+                {% endif %}
             </div>
             <div id=taste>
                 <p style="font-size: 1.5rem;">맛</p>
@@ -22,6 +24,7 @@
         <div class=content>
             <div id=title>
                 <p>{{ target_beer.beer_name }}</p>
+                <p>작성자: {{ target_beer.writer }}</p>
             </div>
             <div id=location>
                 <p>마신 장소: {{ target_beer.place }}</p>
