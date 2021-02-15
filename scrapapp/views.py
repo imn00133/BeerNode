@@ -23,7 +23,6 @@ class ScrapCreateView(CreateView):
     template_name = 'scrapapp/create.html'
 
 
-
 class ScrapDetailView(DetailView):
     model = Scrap
     context_object_name = 'target_beer'
@@ -38,6 +37,7 @@ class ScrapUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse('scrapapp:detail', kwargs={'pk': self.object.pk})
+
 
 class ScrapDeleteView(DeleteView):
     model = Scrap
