@@ -6,7 +6,13 @@
 <div class=main_content>
         <div class=pic_taste>
             <div id=picture>
-                <img src="{{ target_beer.picture.url }}" alt="맥주 사진" id="profile">
+                {% if target_beer.picture %}
+                    <img src="{{ target_beer.picture.url }}" alt="맥주 사진" id="profile">
+                {% else %}
+                    <h5>
+                        no image
+                    </h5>
+                {% endif %}
             </div>
             <div id=taste>
                 <p style="font-size: 1.5rem;">맛</p>
