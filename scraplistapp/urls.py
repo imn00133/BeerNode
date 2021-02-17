@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 from django.views.generic import TemplateView
 
@@ -12,4 +14,4 @@ urlpatterns = [
     path('block/', TemplateView.as_view(
         template_name='scraplistapp/list_block.html'), name='block'),
     path('list/', ScraplistListView.as_view(), name='list'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,12 @@
+<div style="display: block; text-align: center; over-fit: cover">
+    {% if scrap.picture %}
+        <img src="{{ scrap.picture.url }}" alt="">
+    {% else %}
+        <h6>
+            No picture
+        </h6>
+    {% endif %}
+    <h6>
+       {{ scrap.beer_name }}
+    </h6>
+</div>

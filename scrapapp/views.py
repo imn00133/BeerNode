@@ -22,7 +22,6 @@ class ScrapCreateView(CreateView):
     def form_valid(self, form):
         temp = form.save(commit=False)
         temp.writer = self.request.user
-        temp.save
         return super().form_valid(form)
 
 
