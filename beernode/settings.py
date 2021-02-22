@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'scraplistapp',
     'accountapp',
+    'profileapp',
     'bootstrap4',
     'scrapapp',
 ]

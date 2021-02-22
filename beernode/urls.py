@@ -24,5 +24,6 @@ urlpatterns = [
     path('scraplist/', include('scraplistapp.urls')),
     path('scrap/', include('scrapapp.urls')),
     path('account/', include('accountapp.urls')),
+    path('profile/', include('profileapp.urls')),
     path('', TemplateView.as_view(template_name='test_home.html'), name='test_home'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
