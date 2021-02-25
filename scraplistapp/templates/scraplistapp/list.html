@@ -43,66 +43,31 @@
 <!--            <span style="margin: 1rem">-->
 <!--                <a href="{% url 'scraplistapp:list' %}">detail_list</a>-->
 <!--            </span>-->
-            <input type="button" value="block" onclick="alert('block');
+            <input type="button" value="block" onclick="
                 document.querySelector('div.oneline').style.display = 'none';
                 document.querySelector('div.block').style.display = 'block';
                 magicGrid.positionItems();
             ">
-            <input type="button" value="oneline" onclick="alert('oneline');
+            <input type="button" value="oneline" onclick="
                 document.querySelector('div.oneline').style.display = 'block';
                 document.querySelector('div.block').style.display = 'none';
             ">
         </div>
     </div>
-    <div class="block" style="display: none">
-        <div class="container">
-            {% for scrap in object_list %}
-                <div>
-                    <a href="{% url 'scrapapp:detail' pk=scrap.pk %}">
-                        {% include 'snippets/card_blocklist.html' with scrap=scrap %}
-                    </a>
-                </div>
-            {% endfor %}
-        </div>
+    <div class="block" style="display: block">
+        {% include 'scraplistapp/list_block.html' with scrap=scrap %}
+<!--        <div class="container">-->
+<!--            {% for scrap in object_list %}-->
+<!--                <div>-->
+<!--                    <a href="{% url 'scrapapp:detail' pk=scrap.pk %}">-->
+<!--                        {% include 'snippets/card_blocklist.html' with scrap=scrap %}-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            {% endfor %}-->
+<!--        </div>-->
     </div>
     <div class="oneline" style="display: none">
-        <table class="table table-bordered">
-            <thread>
-                <th scope="col">#</th>
-                <th scope="col">title</th>
-                <th scope="col">date</th>
-                <th scope="col">place</th>
-                <th scope="col">context</th>
-                <th scope="col">created date</th>
-            </thread>
-            {% if scrap_list %}
-            <script>
-                var i=1;
-            </script>
-            {% for scrap in object_list %}
-                <tbody>
-                    <tr>
-                        <th scope="row">
-                            <script>
-                                 document.write(i);
-                                 i++;
-                            </script>
-                        </th>
-                        <td><a href="{% url 'scrapapp:detail' pk=scrap.pk %}">{{ scrap.beer_name }}</a></td>
-                        <td>{{ scrap.date }}</td>
-                        <td>{{ scrap.place }}</td>
-                        <td>{{ scrap.context }}</td>
-                        <td>{{ scrap.create_at }}</td>
-                    </tr>
-                </tbody>
-            {% endfor %}
-
-            {% else %}
-                <div>
-                    no scrap
-                </div>
-            {% endif %}
-        </table>
+        {% include 'scraplistapp/list_oneline.html' with object_list=object_list %}
     </div>
     <script src="{% static 'javascript/magicgrid.js' %}"}></script>
 {% endblock %}

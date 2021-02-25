@@ -1,53 +1,9 @@
-{% extends 'base.html' %}
-{% load static %}
-{% load bootstrap4 %}
-
-{% block content %}
-    <style>
-    .container div {
-      width: 200px;
-      height: 200px;
-      background-color: antiquewhite;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 8px;
-    }
-    .nav{
-        display:flex;
-        flex-direction:row;
-        justify-content: center;
-    }
-    </style>
-    <div>
-        <div class="nav">
-            <span style="margin: 1rem">
-                <a href="{% url 'scraplistapp:block' %}">block</a>
-            </span>
-            <span style="margin: 1rem">
-                <a href="{% url 'scraplistapp:oneline' %}">list</a>
-            </span>
-            <span style="margin: 1rem">
-                <a href="{% url 'scraplistapp:list' %}">detail_list</a>
-            </span>
+<div class="container">
+    {% for scrap in object_list %}
+        <div>
+            <a href="{% url 'scrapapp:detail' pk=scrap.pk %}">
+                {% include 'snippets/card_blocklist.html' with scrap=scrap %}
+            </a>
         </div>
-    </div>
-    <div class="container">
-        <div class="item1">1</div>
-        <div class="item2">2</div>
-        <div class="item3">3</div>
-
-        <div class="item4">4</div>
-        <div class="item5">5</div>
-        <div class="item6">6</div>
-        <div class="item7">7</div>
-        <div class="item8">8</div>
-        <div class="item9">9</div>
-        <div class="item10">10</div>
-        <div class="item11">11</div>
-        <div class="item12">12</div>
-        <div class="item13">13</div>
-    </div>
-    <script src="{% static 'javascript/magicgrid.js' %}"}></script>
-
-{% endblock %}
+    {% endfor %}
+</div>
