@@ -1,37 +1,36 @@
-{% extends 'base.html' %}
-{% load static %}
-{% load bootstrap4 %}
-
-{% block content %}
-    <style>
-
-    </style>
-    <div>
-        <div>
-            <span>
-                <a href="{% url 'scraplistapp:block' %}">block</a>
-            </span>
-            <span>
-                <a href="{% url 'scraplistapp:oneline' %}">list</a>
-            </span>
-            <span>
-                <a href="{% url 'scraplistapp:detail' %}">detail</a>
-            </span>
-        </div>
-    </div>
-    <div style="display:block">
-        
-        {% for scrap in scraps.all %}
-        <div>
-            <h6>
-                <a href="{% url 'scrapapp:detail' pk=scrap.pk %}">{{ scrap.beer_name }}</a>
-            </h6>
-        </div>
+<table class="table table-bordered">
+    <thread>
+        <th scope="col">#</th>
+        <th scope="col">title</th>
+        <th scope="col">date</th>
+        <th scope="col">place</th>
+        <th scope="col">context</th>
+        <th scope="col">created date</th>
+    </thread>
+    {% if scrap_list %}
+        <script>
+            var i=1;
+        </script>
+        {% for scrap in object_list %}
+            <tbody>
+                <tr>
+                    <th scope="row">
+                        <script>
+                             document.write(i);
+                             i++;
+                        </script>
+                    </th>
+                    <td><a href="{% url 'scrapapp:detail' pk=scrap.pk %}">{{ scrap.beer_name }}</a></td>
+                    <td>{{ scrap.date }}</td>
+                    <td>{{ scrap.place }}</td>
+                    <td>{{ scrap.context }}</td>
+                    <td>{{ scrap.create_at }}</td>
+                </tr>
+            </tbody>
         {% endfor %}
-    </div>
-
-    <div>
-        <a href="../../scrap/create/"><h4>Add New Beer</h4></a>
-    </div>
-
-{% endblock %}
+    {% else %}
+        <div>
+            no scrap
+        </div>
+    {% endif %}
+</table>
