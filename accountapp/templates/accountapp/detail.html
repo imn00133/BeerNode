@@ -29,8 +29,13 @@
                 {% endif %}
                 {% if target_user == user %}
                     <span>
+                        <a href="{% url 'accountapp:update' pk=target_user.pk %}">
+                            Change Password |
+                        </a>
+                    </span>
+                    <span>
                         <a href="{% url 'profileapp:update' pk=target_user.profile.pk %}">
-                            Edit
+                            Edit Profile |
                         </a>
                     </span>
                     <span>
