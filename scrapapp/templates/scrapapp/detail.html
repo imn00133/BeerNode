@@ -38,10 +38,14 @@
             </div>
         </div>
     </div>
+
+{% if user == target_beer.writer %}
     <a href="{% url 'scrapapp:update' pk=target_beer.pk %}">
         수정
     </a>
     <a href="{% url 'scrapapp:delete' pk=target_beer.pk %}">
         삭제
     </a>
+{% endif %}
+
 {% endblock %}
