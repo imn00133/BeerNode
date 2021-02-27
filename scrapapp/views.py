@@ -1,11 +1,18 @@
+import self as self
+from django.contrib.auth.decorators import login_required
+
 from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse_lazy, reverse
+from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
+from scrapapp.decorators import scrap_ownership_required
 from scrapapp.forms import ScrapCreationForm
 from scrapapp.models import Scrap
+
+has_ownership = [scrap_ownership_required, login_required]
 
 
 def test(request):
@@ -30,7 +37,8 @@ class ScrapDetailView(DetailView):
     context_object_name = 'target_beer'
     template_name = 'scrapapp/detail.html'
 
-
+@method_decorator(has_ownership, 'get')
+@method_decorator(has_ownership, 'post')
 class ScrapUpdateView(UpdateView):
     model = Scrap
     context_object_name = 'target_beer'
@@ -40,7 +48,8 @@ class ScrapUpdateView(UpdateView):
     def get_success_url(self):
         return reverse('scrapapp:detail', kwargs={'pk': self.object.pk})
 
-
+@method_decorator(has_ownership, 'get')
+@method_decorator(has_ownership, 'post')
 class ScrapDeleteView(DeleteView):
     model = Scrap
     context_object_name = 'target_beer'
