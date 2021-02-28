@@ -69,5 +69,10 @@
     <div class="oneline" style="display: none">
         {% include 'scraplistapp/list_oneline.html' with object_list=object_list %}
     </div>
+
+    <div class="map">
+        {% include 'scraplistapp/map.html' %}
+    </div>
+
     <script src="{% static 'javascript/magicgrid.js' %}"}></script>
 {% endblock %}
