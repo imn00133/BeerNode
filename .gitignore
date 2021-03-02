@@ -22,4 +22,5 @@ staticfiles/
 db.sqlite3
 
 # env
+/env/
 /django/env/
