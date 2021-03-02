@@ -25,7 +25,9 @@
         <div>
             <h1>Scraplistapp Test</h1>
             <span>
-                <a href="{% url 'scraplistapp:list' %}">test</a>
+                {% if user.pk %}
+                    <a href="{% url 'scraplistapp:list' pk=user.pk %}">test</a>
+                {% endif %}
             </span>
         </div>
     </div>
