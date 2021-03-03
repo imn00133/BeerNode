@@ -57,5 +57,8 @@ class ScrapUpdateView(UpdateView):
 class ScrapDeleteView(DeleteView):
     model = Scrap
     context_object_name = 'target_beer'
-    success_url = reverse_lazy('scraplistapp:list')
     template_name = 'scrapapp/delete.html'
+
+    def get_success_url(self):
+        user_id = self.request.user.id
+        return reverse_lazy('scraplistapp:list', kwargs={'pk': user_id})
