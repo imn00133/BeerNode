@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 
@@ -11,3 +12,4 @@ class Scrap(models.Model):
     context = models.TextField(verbose_name='내용')
     picture = models.ImageField(upload_to='scrap/', null=True, blank=True, verbose_name='사진')
     create_at = models.DateTimeField(auto_now_add=True, verbose_name='작성일시')
+    rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], verbose_name='평점')
