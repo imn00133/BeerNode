@@ -2,7 +2,7 @@ from django import forms
 
 class starWidget(forms.TextInput):
     input_type = 'rating'
-    template_name = "widgets/star_rate.html"
+    template_name = "scrapapp/star_rate.html"
 
     class Media:
         css = {
