@@ -19,9 +19,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # 환경설정 확인
 if os.environ['PROD'] == 'False':
-    env_path = '../env/.env_dev'
+    env_path = 'env/.env_dev'
 else:
-    env_path = '../env/.env_prod'
+    env_path = 'env/.env_prod'
 
 env = environ.Env(
     DEBUG=(bool, False),
