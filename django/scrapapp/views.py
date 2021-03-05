@@ -23,7 +23,7 @@ class ScrapCreateView(CreateView):
     model = Scrap
     form_class = ScrapCreationForm
     success_url = reverse_lazy('scraplistapp:list')
-    template_name = 'scrapapp/create.html'
+    template_name = 'scrapapp/create_form.html'
 
     def form_valid(self, form):
         temp = form.save(commit=False)

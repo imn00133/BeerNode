@@ -2,20 +2,26 @@
 {% load bootstrap4 %}
 {% block content %}
 
-<div id="map" style="width:300px;height:300px;"></div>
+<input type="text" id="placelat" style="display: none" value="{{ target_beer.lat }}">
+<input type="text" id="placelng" style="display: none" value="{{ target_beer.lng }}">
+<div id="map" style="width:300px;height:300px;">
+    <input id="no_location" value="">
+</div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	e24f51c0e852bafcc4f1c9c5bda72523"></script>
 <script>
+var place_lat = document.getElementById("placelat").value;
+var place_lng = document.getElementById("placelng").value;
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     mapOption = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        center: new kakao.maps.LatLng(place_lat, place_lng), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
     };
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
 // 마커가 표시될 위치입니다
-var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667);
+var markerPosition  = new kakao.maps.LatLng(place_lat, place_lng);
 
 // 마커를 생성합니다
 var marker = new kakao.maps.Marker({

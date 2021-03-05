@@ -38,7 +38,11 @@
                         <p>마신 장소: {{ target_beer.place }}</p>
                     </div>
                     <div style="position:relative;z-index:1">
-                        {% include 'scrapapp/detail_map.html' %}
+                        {% if target_beer.lat %}
+                            {% include 'scrapapp/detail_map.html' with target_beer=target_beer %}
+                        {% else %}
+                            no location...
+                        {% endif %}
                     </div>
                 </div>
             </div>
