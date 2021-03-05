@@ -17,6 +17,7 @@ staticfiles/
 ## test image
 /media/scrap/
 /media/
+/django/media/
 
 ## sqlite
 db.sqlite3

@@ -26,13 +26,33 @@
             </div>
         </div>
         <div class=content>
-            <div id=title>
-                <p>{{ target_beer.beer_name }}</p>
-                <p>작성자: {{ target_beer.writer }}</p>
+            <div style="display:flex; flex-direction: row">
+                <div  style="flex:1;display:flex;flex-direction:column">
+                    <div id=title style="flex:1">
+                        <p>{{ target_beer.beer_name }}</p>
+                        <p>작성자: {{ target_beer.writer }}</p>
+                    </div>
+                </div>
+                <div>
+                    <div id=location style="flex:1">
+                        <p>마신 장소: {{ target_beer.place }}</p>
+                    </div>
+                    <div style="position:relative;z-index:1">
+                        {% if target_beer.lat %}
+                            {% include 'scrapapp/detail_map.html' with target_beer=target_beer %}
+                        {% else %}
+                            no location...
+                        {% endif %}
+                    </div>
+                </div>
             </div>
-            <div id=location>
-                <p>마신 장소: {{ target_beer.place }}</p>
-            </div>
+<!--            <div id=title>-->
+<!--                <p>{{ target_beer.beer_name }}</p>-->
+<!--                <p>작성자: {{ target_beer.writer }}</p>-->
+<!--            </div>-->
+<!--            <div id=location>-->
+<!--                <p>마신 장소: {{ target_beer.place }}</p>-->
+<!--            </div>-->
             <div id=text>
                 <p>{{ target_beer.context }}</p>
             </div>

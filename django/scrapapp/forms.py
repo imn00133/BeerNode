@@ -5,9 +5,11 @@ from scrapapp.models import Scrap
 
 
 class ScrapCreationForm(ModelForm):
+
     class Meta:
         model = Scrap
-        fields = ['beer_name', 'date', 'place', 'flavor', 'context', 'picture']
+        fields = ['beer_name', 'date', 'place', 'lat', 'lng', 'flavor', 'context', 'picture']
         widgets = {
-            'date': DateInput(attrs={'type': 'date'})
+            'date': DateInput(attrs={'type': 'date'}),
         }
+
