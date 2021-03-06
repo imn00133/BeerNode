@@ -22,7 +22,7 @@ def test(request):
 class ScrapCreateView(CreateView):
     model = Scrap
     form_class = ScrapCreationForm
-    template_name = 'scrapapp/create.html'
+    template_name = 'scrapapp/create_form.html'
 
     def form_valid(self, form):
         temp = form.save(commit=False)
