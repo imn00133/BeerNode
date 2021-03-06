@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'profileapp',
     'bootstrap4',
     'scrapapp',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
