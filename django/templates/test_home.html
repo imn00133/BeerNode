@@ -19,13 +19,15 @@
                 <a href="{% url 'scrapapp:create' %}">Create</a>
             </span>
             <span>
-                <a href="{% url 'scrapapp:detail'  pk='1' %}">Detail</a>
+                <a href="{% url 'scrapapp:detail' pk='1' %}">Detail</a>
             </span>
         </div>
         <div>
             <h1>Scraplistapp Test</h1>
             <span>
-                <a href="{% url 'scraplistapp:list' %}">test</a>
+                {% if user.pk %}
+                    <a href="{% url 'scraplistapp:list' pk=user.pk %}">test</a>
+                {% endif %}
             </span>
         </div>
     </div>

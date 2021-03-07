@@ -9,6 +9,8 @@ class Scrap(models.Model):
     date = models.DateField(null=True, verbose_name='마신 날짜')
     place = models.CharField(max_length=128, verbose_name='장소')
     flavor = models.CharField(max_length=128, verbose_name='맛')
+    lng = models.CharField(max_length=128, null=True, blank=True)
+    lat = models.CharField(max_length=128, null=True, blank=True)
     context = models.TextField(verbose_name='내용')
     picture = models.ImageField(upload_to='scrap/', null=True, blank=True, verbose_name='사진')
     create_at = models.DateTimeField(auto_now_add=True, verbose_name='작성일시')
