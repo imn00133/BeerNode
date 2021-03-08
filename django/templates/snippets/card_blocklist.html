@@ -1,10 +1,10 @@
+{% load static %}
+
 <div style="display: block; text-align: center; over-fit: cover">
     {% if scrap.picture %}
         <img src="{{ scrap.picture.url }}" alt="" style="object-fit: scale-down;">
     {% else %}
-        <h6>
-            No picture
-        </h6>
+        <img src="{% static 'image/no_img.png' %}" alt="" style="object-fit: scale-down;">
     {% endif %}
     <h6>
        {{ scrap.beer_name }}

@@ -9,9 +9,7 @@
                 {% if target_beer.picture %}
                     <img src="{{ target_beer.picture.url }}" alt="맥주 사진" id="profile">
                 {% else %}
-                    <h5>
-                        no image
-                    </h5>
+                    <img src="{% static 'image/no_img.png' %}" alt="맥주 사진" id="default_image">
                 {% endif %}
             </div>
             <div id=taste>
