@@ -19,7 +19,7 @@
                     <img src="{{ target_beer.picture.url }}" alt="맥주 사진" id="profile">
                 {% else %}
                     <h5>
-                        no image
+                        사진이 없습니다
                     </h5>
                 {% endif %}
             </div>
@@ -36,7 +36,7 @@
                     {{ target_beer.rating }} / 5
                 {% else %}
                     <h5>
-                        no rating
+                        평점이 없습니다
                     </h5>
                 {% endif %}
             <div id=taste>
@@ -66,7 +66,7 @@
                         {% if target_beer.lat %}
                             {% include 'scrapapp/detail_map.html' with target_beer=target_beer %}
                         {% else %}
-                            no location...
+                            장소가 없습니다
                         {% endif %}
                     </div>
                 </div>
