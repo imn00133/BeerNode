@@ -2,8 +2,17 @@
 {% load static %}
 
 {% block content %}
+<!--https://m.blog.naver.com/PostView.nhn?blogId=inyoung313&logNo=220618323942&proxyReferer=https:%2F%2Fwww.google.com%2F-->
+<style>
+    .star-rating { width:304px;}
+    .star-rating,.star-rating span { display:inline-block; height:55px; overflow:hidden; background:url(/static/rating.png)no-repeat; }
+    .star-rating span{ background-position:left bottom; line-height:0; vertical-align:top; }
+</style>
+
+
 <link rel="stylesheet" href="{% static 'css/detail.css' %}">
 <div class=main_content>
+
         <div class=pic_taste>
             <div id=picture>
                 {% if target_beer.picture %}
@@ -12,6 +21,22 @@
                     <img src="{% static 'image/no_img.png' %}" alt="맥주 사진" id="default_image">
                 {% endif %}
             </div>
+                <p style="font-size: 1.5rem;">평점</p>
+                {% if target_beer.rating %}
+                    //TODO bug fix
+                    <span class="star-rating">
+                    <span id="ratingwidth" style="width: {{ ratingwidth }} %"><script>
+                        var rating = 20 * {{ target_beer.rating }};
+                        object.style.width="rating";
+                    </script></span>
+                    </span>
+                    <br>
+                    {{ target_beer.rating }} / 5
+                {% else %}
+                    <h5>
+                        평점이 없습니다
+                    </h5>
+                {% endif %}
             <div id=taste>
                 <p style="font-size: 1.5rem;">맛</p>
                 <ul>
@@ -39,7 +64,7 @@
                         {% if target_beer.lat %}
                             {% include 'scrapapp/detail_map.html' with target_beer=target_beer %}
                         {% else %}
-                            no location...
+                            장소가 없습니다
                         {% endif %}
                     </div>
                 </div>

@@ -22,20 +22,20 @@
     <center>
             {% if not user.is_authenticated %}
             <span>
-                <a href="{% url 'accountapp:login' %}?next={{ request.path }}">Login</a>
+                <a href="{% url 'accountapp:login' %}?next={{ request.path }}">로그인</a>
             </span>
             <span>
-                <a href="{% url 'accountapp:create' %}">Create account</a>
+                <a href="{% url 'accountapp:create' %}">계정 생성</a>
             </span>
             {% else %}
             <span>
                 <strong>{{ user.username }}</strong>
             </span>
             <span>
-                <a href="{% url 'accountapp:detail' pk=user.pk %}">Mypage</a>
+                <a href="{% url 'accountapp:detail' pk=user.pk %}">내 정보</a>
             </span>
             <span>
-                <a href="{% url 'accountapp:logout' %}?next={{ request.path }}">Logout</a>
+                <a href="{% url 'accountapp:logout' %}?next={{ request.path }}">로그아웃</a>
             </span>
             {% endif %}
         </center>

@@ -14,19 +14,22 @@
 
     <div class="main">
         <div>
-            <h1>Scrapapp Test</h1>
+            <h1>Scrapp 테스트</h1>
             <span>
-                <a href="{% url 'scrapapp:create' %}">Create</a>
+                <a href="{% url 'scrapapp:create' %}">스크랩 생성</a>
             </span>
             <span>
-                <a href="{% url 'scrapapp:detail' pk='1' %}">Detail</a>
+                  |
+            </span>
+            <span>
+                <a href="{% url 'scrapapp:detail' pk='1' %}">스크랩 세부사항</a>
             </span>
         </div>
         <div>
-            <h1>Scraplistapp Test</h1>
+            <h1>Scraplistapp 테스트</h1>
             <span>
                 {% if user.pk %}
-                    <a href="{% url 'scraplistapp:list' pk=user.pk %}">test</a>
+                    <a href="{% url 'scraplistapp:list' pk=user.pk %}">리스트 보기</a>
                 {% endif %}
             </span>
         </div>
