@@ -38,6 +38,9 @@ header, body {
     width: 20rem;
     height: 20rem;
     margin: 0.5rem auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 #taste {
