@@ -15,7 +15,7 @@
                     <img src="{{ target_user.profile.image.url }}" alt="">
                 {% else %}
                     <p>
-                        no image
+                        사진이 없습니다
                     </p>
                 {% endif %}
                 {% if target_user.profile.message %}
@@ -24,23 +24,23 @@
                     </p>
                 {% else %}
                     <p>
-                        no message
+                        한 마디도 남기지 않았습니다
                     </p>
                 {% endif %}
                 {% if target_user == user %}
                     <span>
                         <a href="{% url 'accountapp:update' pk=target_user.pk %}">
-                            Change Password |
+                            비밀번호 변경 |
                         </a>
                     </span>
                     <span>
                         <a href="{% url 'profileapp:update' pk=target_user.profile.pk %}">
-                            Edit Profile |
+                            프로필 수정 |
                         </a>
                     </span>
                     <span>
                         <a href="{% url 'accountapp:delete' pk=target_user.pk %}">
-                            Quit
+                            탈퇴
                         </a>
                     </span>
                 {% endif %}
@@ -51,7 +51,7 @@
                 <a href="{% url 'profileapp:create' %}">
 
                     <h2>
-                        Create Profile
+                        프로필 생성
                     </h2>
                 </a>
             {% endif %}
