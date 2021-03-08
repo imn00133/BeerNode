@@ -18,9 +18,7 @@
                 {% if target_beer.picture %}
                     <img src="{{ target_beer.picture.url }}" alt="맥주 사진" id="profile">
                 {% else %}
-                    <h5>
-                        사진이 없습니다
-                    </h5>
+                    <img src="{% static 'image/no_img.png' %}" alt="맥주 사진" id="default_image">
                 {% endif %}
             </div>
                 <p style="font-size: 1.5rem;">평점</p>
