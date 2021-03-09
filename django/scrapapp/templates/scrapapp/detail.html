@@ -16,7 +16,7 @@
         <div class=pic_taste>
             <div id=picture>
                 {% if target_beer.picture %}
-                    <img src="{{ target_beer.picture.url }}" alt="맥주 사진" id="profile">
+                    <img src="{{ target_beer.picture.url }}" onerror="this.src='{% static 'image/no_img.png' %}'" alt="맥주 사진" id="profile">
                 {% else %}
                     <img src="{% static 'image/no_img.png' %}" alt="맥주 사진" id="default_image">
                 {% endif %}
