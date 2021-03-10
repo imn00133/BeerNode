@@ -9,9 +9,15 @@ class ScrapCreationForm(ModelForm):
     class Meta:
         model = Scrap
 
-        fields = ['beer_name', 'date', 'place', 'lat', 'lng', 'flavor', 'context', 'picture', 'rating']
+        fields = ['beer_name', 'date', 'place', 'lat', 'lng', 'flavor', 'context', 'picture', 'rating', 'sweet', 'sour', 'bitter', 'hoppy', 'fruity', 'malty']
         widgets = {
             'date': DateInput(attrs={'type': 'date'}),
             'rating': starWidget,
+            'sweet' : starWidget,
+            'sour' : starWidget,
+            'bitter' : starWidget,
+            'hoppy' : starWidget,
+            'fruity' : starWidget,
+            'malty' : starWidget,
         }
 
