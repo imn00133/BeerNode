@@ -3,6 +3,7 @@
 {% load bootstrap4 %}
 
 {% block content %}
+
     <style>
         .nav{
             display:flex;
@@ -32,6 +33,10 @@
             border-radius: 1rem;
         }
     </style>
+    <form method="get">
+        {{ filter.form }}
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
     <div style="text-align: center">
         <a href="{% url 'scrapapp:create' %}">
             스크랩 생성
