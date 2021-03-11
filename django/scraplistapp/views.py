@@ -8,6 +8,8 @@ from django.views.generic import DetailView, ListView
 from scrapapp.models import Scrap
 from scraplistapp.models import Scraplist
 
+from .filters import ScrapFilter
+
 global one
 
 
@@ -30,4 +32,5 @@ class ScraplistListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['object_list'] = Scrap.objects.filter(writer_id=self.kwargs['pk'])
+        context['filter'] = ScrapFilter(self.request.GET, queryset=context['object_list'])
         return context
