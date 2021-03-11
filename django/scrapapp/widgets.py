@@ -32,7 +32,7 @@ class RangeInput(Input):
     def build_attrs(self, *args, **kwargs):
         attrs = super().build_attrs(*args, **kwargs)
         attrs.update({
-            'min': 0,
+            'min': 1,
             'max': 5,
             'step': 1,
         })
