@@ -2,8 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-# Create your views here.
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, DeleteView, UpdateView
 
@@ -25,6 +24,7 @@ class AccountDetailView(DetailView):
     context_object_name = 'target_user'
     template_name = 'accountapp/detail.html'
 
+
 @method_decorator(has_ownership, 'get')
 @method_decorator(has_ownership, 'post')
 class AccountUpdateView(UpdateView):
@@ -33,6 +33,7 @@ class AccountUpdateView(UpdateView):
     context_object_name = 'target_user'
     template_name = 'accountapp/update.html'
     success_url = reverse_lazy('test_home')
+
 
 @method_decorator(has_ownership, 'get')
 @method_decorator(has_ownership, 'post')
