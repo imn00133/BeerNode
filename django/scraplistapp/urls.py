@@ -14,4 +14,4 @@ urlpatterns = [
     path('block/', TemplateView.as_view(
         template_name='scraplistapp/list_block.html'), name='block'),
     path('list/<int:pk>', ScraplistListView.as_view(), name='list'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
