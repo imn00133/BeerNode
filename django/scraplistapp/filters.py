@@ -4,7 +4,6 @@ from scrapapp.models import Scrap
 
 
 class ScrapFilter(django_filters.FilterSet):
-
     class Meta:
         model = Scrap
         fields = {

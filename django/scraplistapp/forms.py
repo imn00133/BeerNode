@@ -7,5 +7,3 @@ class ScraplistCreationForm(ModelForm):
     class Meta:
         model = Scraplist
         fields = ['image', 'scrap', 'message']
-
-

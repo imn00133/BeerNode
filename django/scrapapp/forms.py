@@ -6,10 +6,8 @@ from .widgets import starWidget, RangeInput
 
 
 class ScrapCreationForm(ModelForm):
-
     class Meta:
         model = Scrap
-
         fields = ['beer_name', 'date', 'place', 'lat', 'lng', 'context', 'picture', 'rating', 'sweet', 'sour', 'bitter', 'hoppy', 'fruity', 'malty']
         widgets = {
             'date': DateInput(attrs={'type': 'date'}),
@@ -21,4 +19,3 @@ class ScrapCreationForm(ModelForm):
             'fruity':RangeInput,
             'malty':RangeInput
         }
-

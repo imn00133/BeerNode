@@ -26,6 +26,7 @@ class starWidget(forms.TextInput):
         })
         return attrs
 
+
 class RangeInput(Input):
     input_type = 'range'
 
