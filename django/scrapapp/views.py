@@ -59,3 +59,7 @@ class ScrapDeleteView(DeleteView):
     def get_success_url(self):
         user_id = self.request.user.id
         return reverse_lazy('scraplistapp:list', kwargs={'pk': user_id})
+
+
+def handler403(request, exception):
+    return render(request, '403.html', status=403)
