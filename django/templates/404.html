@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block content %}
+<div>
+</div>
+<script>
+    window.setTimeout(function(){
+        alert('Error...404...');
+        var link = 'http://127.0.0.1:8000/';
+        location.href= link;
+    }, 200);
+</script>
+{% endblock %}
