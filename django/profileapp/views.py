@@ -1,7 +1,4 @@
-from django.shortcuts import render
-
-# Create your views here.
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse
 from django.views.generic import CreateView, UpdateView
 
 from profileapp.forms import ProfileCreationForm

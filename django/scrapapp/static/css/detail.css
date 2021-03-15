@@ -19,6 +19,11 @@ header, body {
     align-content: center;
 }
 
+
+.star-rating {width:205px; margin:0 auto;}
+.star-rating,.star-rating span {display:block; height:39px; overflow:hidden; background:url(/static/rating.png)no-repeat; }
+.star-rating span{background-position:left bottom; line-height:0; vertical-align:top; }
+
 .content{
     border: 1px blue solid;
     float: left;
