@@ -1,9 +1,7 @@
 from django.db.models.fields.files import ImageFieldFile
 from django.forms import ImageField
 
-from beernode import settings
-
-DEFAULT_IMAGE_PATH = 'django/static/imgae/no_img.png'
+DEFAULT_IMAGE_PATH = 'image/no_img.png'
 
 
 class DefaultStaticImageFieldFile(ImageFieldFile):
@@ -12,11 +10,7 @@ class DefaultStaticImageFieldFile(ImageFieldFile):
         try:
             return super().url
         except ValueError:
-            from django.contrib.staticfiles.storage import staticfiles_storage
-            from django.contrib.staticfiles import finders
-            if finders.find(self.field.static_image_path):
-                return staticfiles_storage.url(self.field.static_image_path)
-            return staticfiles_storage.url(DEFAULT_IMAGE_PATH)
+            return DEFAULT_IMAGE_PATH
 
 
 class DefaultStaticImageField(ImageField):
@@ -25,6 +19,6 @@ class DefaultStaticImageField(ImageField):
     def __init__(self, *args, **kwargs):
         self.static_image_path = kwargs.pop(
             'default_image_path',
-            getattr(settings, 'DEFAULT_IMAGE_PATH', DEFAULT_IMAGE_PATH)
+            getattr(DEFAULT_IMAGE_PATH)
         )
         super().__init__(*args, **kwargs)

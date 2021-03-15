@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
+from django_fields import DefaultStaticImageField
 
 
 class Scrap(models.Model):
@@ -12,6 +13,6 @@ class Scrap(models.Model):
     lng = models.CharField(max_length=128, null=True, blank=True)
     lat = models.CharField(max_length=128, null=True, blank=True)
     context = models.TextField(verbose_name='내용')
-    picture = models.DefaultStaticImgaeField(upload_to='scrap/', null=True, blank=True, verbose_name='사진')
+    picture = DefaultStaticImageField(upload_to='scrap/', null=True, blank=True, default_image_path='image/no_img.png', verbose_name='사진')
     create_at = models.DateTimeField(auto_now_add=True, verbose_name='작성일시')
     rating = models.FloatField(null=True, validators=[MinValueValidator(1), MaxValueValidator(5)], verbose_name='평점')
