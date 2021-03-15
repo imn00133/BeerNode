@@ -41,27 +41,34 @@ SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
-
+# DEBUG = False
 ALLOWED_HOSTS = env('ALLOW_HOSTS')
-
+# ALLOWED_HOSTS = ['127.0.0.1']
 
 # Application definition
 
 INSTALLED_APPS = [
+    # django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # thirds apps
+    'bootstrap4',
+    'debug_toolbar',
+    # locals apps
     'scraplistapp',
     'accountapp',
     'profileapp',
-    'bootstrap4',
     'scrapapp',
+    'django_filters',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -69,6 +76,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+]
+
+INTERNAL_IPS = [
+    '127.0.0.1',
 ]
 
 ROOT_URLCONF = 'beernode.urls'
@@ -150,3 +162,7 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]

@@ -1,5 +1,5 @@
 <div class="container">
-    {% for scrap in object_list %}
+    {% for scrap in filter.qs %}
         <div>
             <a href="{% url 'scrapapp:detail' pk=scrap.pk %}">
                 {% include 'snippets/card_blocklist.html' with scrap=scrap %}

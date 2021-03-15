@@ -2,12 +2,6 @@
 {% load static %}
 
 {% block content %}
-<!--https://m.blog.naver.com/PostView.nhn?blogId=inyoung313&logNo=220618323942&proxyReferer=https:%2F%2Fwww.google.com%2F-->
-<style>
-    .star-rating { width:304px;}
-    .star-rating,.star-rating span { display:inline-block; height:55px; overflow:hidden; background:url(/static/rating.png)no-repeat; }
-    .star-rating span{ background-position:left bottom; line-height:0; vertical-align:top; }
-</style>
 
 
 <link rel="stylesheet" href="{% static 'css/detail.css' %}">
@@ -19,15 +13,15 @@
             </div>
                 <p style="font-size: 1.5rem;">평점</p>
                 {% if target_beer.rating %}
-                    //TODO bug fix
-                    <span class="star-rating">
-                    <span id="ratingwidth" style="width: {{ ratingwidth }} %"><script>
-                        var rating = 20 * {{ target_beer.rating }};
-                        object.style.width="rating";
-                    </script></span>
-                    </span>
+                <div class='star-rating'>
+                        <span id="star_blue"></span>
+                </div>
+                <script>
+                    var ratingPercent = 20 * {{ target_beer.rating }};
+                    document.getElementById('star_blue').style.width = ratingPercent + '%';
+                </script>
                     <br>
-                    {{ target_beer.rating }} / 5
+                    {{ target_beer.rating }} / 5.0
                 {% else %}
                     <h5>
                         평점이 없습니다
@@ -36,11 +30,48 @@
             <div id=taste>
                 <p style="font-size: 1.5rem;">맛</p>
                 <ul>
-                    <li>{{ target_beer.flavor }}</li>
-                    <li>항목1</li>
-                    <li>항목2</li>
-                    <li>항목3</li>
-                    <li>항목4</li>
+                    <li>sweet :
+                        {% if target_beer.sweet %}
+                            {{ target_beer.sweet }} / 5.0
+                        {% else %}
+                            값이 없습니다
+                        {% endif %}
+                    </li>
+                    <li>sour :
+                        {% if target_beer.sour %}
+                            {{ target_beer.sour }} / 5.0
+                        {% else %}
+                            값이 없습니다
+                        {% endif %}
+                    </li>
+                    <li>bitter :
+                        {% if target_beer.bitter %}
+                            {{ target_beer.bitter }} / 5.0
+                        {% else %}
+                            값이 없습니다
+                        {% endif %}
+                    </li>
+                    <li>hoppy :
+                        {% if target_beer.hoppy %}
+                            {{ target_beer.hoppy }} / 5.0
+                        {% else %}
+                            값이 없습니다
+                        {% endif %}
+                    </li>
+                    <li>fruity :
+                        {% if target_beer.fruity %}
+                            {{ target_beer.fruity }} / 5.0
+                        {% else %}
+                            값이 없습니다
+                        {% endif %}
+                    </li>
+                    <li>malty :
+                        {% if target_beer.malty %}
+                            {{ target_beer.malty }} / 5.0
+                        {% else %}
+                            값이 없습니다
+                        {% endif %}
+                    </li>
                 </ul>
             </div>
         </div>
@@ -65,13 +96,6 @@
                     </div>
                 </div>
             </div>
-<!--            <div id=title>-->
-<!--                <p>{{ target_beer.beer_name }}</p>-->
-<!--                <p>작성자: {{ target_beer.writer }}</p>-->
-<!--            </div>-->
-<!--            <div id=location>-->
-<!--                <p>마신 장소: {{ target_beer.place }}</p>-->
-<!--            </div>-->
             <div id=text>
                 <p>{{ target_beer.context }}</p>
             </div>
