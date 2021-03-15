@@ -9,11 +9,7 @@
 
         <div class=pic_taste>
             <div id=picture>
-                {% if target_beer.picture %}
-                    <img src="{{ target_beer.picture.url }}" alt="맥주 사진" id="profile">
-                {% else %}
-                    <img src="{% static 'image/no_img.png' %}" alt="맥주 사진" id="default_image">
-                {% endif %}
+                <img src="{{ target_beer.picture.url }}" alt="맥주 사진" id="profile">
             </div>
                 <p style="font-size: 1.5rem;">평점</p>
                 {% if target_beer.rating %}
