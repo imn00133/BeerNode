@@ -9,7 +9,7 @@
 
             {% if target_user.profile %}
                 <h2>
-                    {{ target_user.profile.username }}
+                    {{ target_user.profile.nickname }}
                 </h2>
                 {% if target_user.profile.image %}
                     <img src="{{ target_user.profile.image.url }}" alt="">
