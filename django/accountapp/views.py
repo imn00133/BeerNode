@@ -1,29 +1,22 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.shortcuts import redirect
 
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, DeleteView, UpdateView
 
 from accountapp.decorators import account_ownership_required
-from accountapp.forms import AccountUpdateForm, AccountCreationForm
+from accountapp.forms import AccountUpdateForm
 
 has_ownership = [account_ownership_required, login_required]
 
 
 class AccountCreateView(CreateView):
     model = User
-    form_class = AccountCreationForm
+    form_class = UserCreationForm
     success_url = reverse_lazy('test_home')
     template_name = 'accountapp/create.html'
-
-    def form_valid(self, form):
-        user = form['user'].save()
-        profile = form['profile'].save(commit=False)
-        profile.user = user
-        profile.save()
-        return redirect(self.success_url)
 
 
 class AccountDetailView(DetailView):
