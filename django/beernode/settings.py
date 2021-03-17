@@ -58,12 +58,12 @@ INSTALLED_APPS = [
     # thirds apps
     'bootstrap4',
     'debug_toolbar',
+    'django_filters',
     # locals apps
     'scraplistapp',
     'accountapp',
     'profileapp',
     'scrapapp',
-    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -75,7 +75,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 INTERNAL_IPS = [
