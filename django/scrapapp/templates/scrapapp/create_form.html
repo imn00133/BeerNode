@@ -2,9 +2,39 @@
 {% load static %}
 
 {% block content %}
+<style>
+    th{
+        width: 6rem;
+    }
+    th, td{
+        border:1px solid #000000;
+        padding: 4px;
+    }
+    table{
+        width: 90%;
+        border: 1px solid #000000;
+        margin: 3rem;
+        margin-right: 3rem;
+        border-collapse:collapse;
+    }
+    @media screen and (min-width: 860px){
+        table{
+            width: 750px;
+            border: 1px solid #000000;
+            margin: 0 auto;
+            border-collapse:collapse;
+        }
+    }
+    #id_context{
+        width:100%
+    }
+    #id_beer_name, #get_placename{
+        width: 100%;
 
+    }
+</style>
 
-<div style="text-align:center; max-width: 500px; margin: 4rem auto">
+<div style="text-align:center; margin: 4rem auto">
     <div class="mb-4">
         <h4>스크랩 생성</h4>
     </div>
@@ -12,29 +42,31 @@
         {% csrf_token %}
         <table border="1">
             <tr>
-                <th>{{ form.beer_name.label_tag }}</th>
-                <td>
+                <th>{{ form.beer_name.label }}</th>
+                <td style="text-align: left;">
                     {{ form.beer_name }}
                 </td>
             </tr>
             <tr>
-                <th>{{ form.date.label_tag }}</th>
-                <td>
+                <th>{{ form.date.label }}</th>
+                <td style="text-align: left;">
                     {{ form.date }}
                 </td>
             </tr>
             <tr>
-                <th>{{ form.place.label_tag }}</th>
-                <td>
+                <th>{{ form.place.label }}</th>
+                <td style="text-align: left;">
                     <input type="text"
                            name="{{ form.place.name }}"
                            id="get_placename"
-                           value="" readonly>
+                           value=""
+                           style="margin-bottom: 4px;"
+                           readonly>
                     {% include 'scrapapp/map.html' %}
                 </td>
             </tr>
             <tr style="display:none">
-                <th>{{ form.lat.label_tag }}</th>
+                <th>{{ form.lat.label }}</th>
                 <td>
                     <input type="text"
                            name="{{ form.lat.name }}"
@@ -43,7 +75,7 @@
                 </td>
             </tr>
             <tr style="display:none">
-                <th>{{ form.lng.label_tag }}</th>
+                <th>{{ form.lng.label }}</th>
                 <td>
                     <input type="text"
                            name="{{ form.lng.name }}"
@@ -52,55 +84,55 @@
                 </td>
             </tr>
             <tr>
-                <th>{{ form.context.label_tag }}</th>
-                <td>
+                <th>{{ form.context.label }}</th>
+                <td style="padding:2px;padding-top:4px;">
                     {{ form.context }}
                 </td>
             </tr>
             <tr>
-                <th>{{ form.rating.label_tag }}</th>
+                <th>{{ form.rating.label }}</th>
                 <td>
                     {{ form.rating }}
                 </td>
             </tr>
             <tr>
-                <th>{{ form.sweet.label_tag }}</th>
+                <th>{{ form.sweet.label }}</th>
                 <td>
                     {{ form.sweet }}
                 </td>
             </tr>
             <tr>
-                <th>{{ form.sour.label_tag }}</th>
+                <th>{{ form.sour.label }}</th>
                 <td>
                     {{ form.sour }}
                 </td>
             </tr>
             <tr>
-                <th>{{ form.bitter.label_tag }}</th>
+                <th>{{ form.bitter.label }}</th>
                 <td>
                     {{ form.bitter }}
                 </td>
             </tr>
             <tr>
-                <th>{{ form.hoppy.label_tag }}</th>
+                <th>{{ form.hoppy.label }}</th>
                 <td>
                     {{ form.hoppy }}
                 </td>
             </tr>
             <tr>
-                <th>{{ form.fruity.label_tag }}</th>
+                <th>{{ form.fruity.label }}</th>
                 <td>
                     {{ form.fruity }}
                 </td>
             </tr>
             <tr>
-                <th>{{ form.malty.label_tag }}</th>
+                <th>{{ form.malty.label }}</th>
                 <td>
                     {{ form.malty }}
                 </td>
             </tr>
             <tr>
-                <th>{{ form.picture.label_tag }}</th>
+                <th>{{ form.picture.label }}</th>
                 <td>
                     {{ form.picture }}
                 </td>
