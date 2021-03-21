@@ -74,9 +74,6 @@
                 </li>
             </ul>
             </div>
-            <div>
-                <canvas id="myCanvas" width="250" height="250"></canvas>
-            </div>
         </div>
     </div>
     <div class=content>
@@ -105,9 +102,6 @@
         </div>
     </div>
 </div>
-<div style="float:left;">
-
-</div>
 
 {% if user == target_beer.writer %}
     <a href="{% url 'scrapapp:update' pk=target_beer.pk %}">
@@ -117,118 +111,4 @@
         삭제
     </a>
 {% endif %}
-
-<script>
-    var canvas = document.getElementById('myCanvas');
-    var context = canvas.getContext('2d');
-    var centerX = canvas.width / 2;
-    var centerY = canvas.height / 2;
-    var radius = 85;
-    var copy = 6;
-
-    var hex_width = 2;
-    var hex_color = '#8f8580';
-    var radius_width = 1;
-    var radius_color = '#414141';
-    var data_width = 4;
-    var data_color = '#ba9800';
-    var data_fillcolor = '#f0c400';
-    var text_color = '#000000';
-
-    var data_sample = [{{ target_beer.sweet }}, {{ target_beer.sour }}, {{ target_beer.bitter }},
-                       {{ target_beer.hoppy }}, {{ target_beer.fruity }}, {{ target_beer.malty }}];
-    var max_rate = 5;
-    console.log(data_sample);
-
-    function hex(context, centerX, centerY, radius, shape){
-        var hexPos=[[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]];
-        for(var i = 0; i < hexPos.length; i++){
-            hexPos[i] = [centerX + radius * Math.cos(Math.PI * i / 3),
-                         centerY + radius * Math.sin(Math.PI * i / 3)];
-        }
-        if(shape === 0){
-            context.beginPath();
-            context.moveTo(hexPos[0][0], hexPos[0][1]);
-            for(i = 0; i < hexPos.length; i++){
-                var pos = hexPos[i];
-                context.lineTo(pos[0], pos[1]);
-            }
-            context.lineTo(hexPos[0][0], hexPos[0][1]);
-            context.lineWidth = hex_width;
-            context.strokeStyle = hex_color;
-            context.lineCap = 'round';
-            context.lineJoin ='round';
-            context.stroke();
-        }
-        if(shape === 1){
-            context.beginPath();
-            for(i = 0; i<hexPos.length; i++){
-                var pos = hexPos[i];
-                context.moveTo(centerX, centerY);
-                context.lineTo(pos[0], pos[1]);
-            }
-            context.lineWidth = radius_width;
-            context.strokeStyle = radius_color;
-            context.lineCap = 'round';
-            context.lineJoin = 'round';
-            context.stroke();
-        }
-
-    }
-
-    function layered_hex(context, centerX, centerY, radius, copy){
-        hex(context, centerX, centerY, radius, 1);
-        hex(context,centerX, centerY, 1, 0);
-        for(var i = 1; i < copy; i++){
-            hex(context, centerX, centerY, radius / (copy-1) * i, 0);
-        }
-    }
-
-    function data_hex(context, centerX, centerY, radius, dataset, fill){
-        var convert_data = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]];
-        for(i = 0; i < dataset.length; i++){
-            radius_convert = radius * dataset[i] / max_rate;
-            convert_data[i] = [centerX + radius_convert * Math.cos(Math.PI * i / 3),
-                               centerY + radius_convert * Math.sin(Math.PI * i / 3)];
-        }
-
-        context.beginPath();
-        context.moveTo(convert_data[0][0], convert_data[0][1]);
-        for(i = 0; i < convert_data.length; i++){
-            var pos = convert_data[i];
-            context.lineTo(pos[0], pos[1]);
-        }
-        context.lineTo(convert_data[0][0], convert_data[0][1]);
-        context.lineWidth = data_width;
-        context.strokeStyle = data_color;
-        context.lineCap = 'round';
-        context.lineJoin ='round';
-        if( fill === 1){
-            context.fillStyle = data_fillcolor;
-            context.fill();
-        }
-        context.stroke();
-    }
-
-    data_hex(context, centerX, centerY, radius, data_sample, 1);
-    layered_hex(context, centerX, centerY, radius, copy);
-    data_hex(context, centerX, centerY, radius, data_sample, 0);
-
-    var hexPos = [0,0,0,0,0,0];
-    for(var i = 0; i < hexPos.length; i++){
-            hexPos[i] = [centerX + (radius + 10) * Math.cos(Math.PI * i / 3),
-                         centerY + (radius + 10) * Math.sin(Math.PI * i / 3)];
-    }
-    console.log('hexPos :');
-    console.log(hexPos);
-    context.font = '10px malgun gothic';
-    context.fillStyle = text_color;
-    context.fillText('단맛', hexPos[0][0]-5, hexPos[0][1]+3  );
-    context.fillText('신맛', hexPos[1][0]-10, hexPos[1][1]+7);
-    context.fillText('쓴맛', hexPos[2][0]-10, hexPos[2][1]+7);
-    context.fillText('홉향', hexPos[3][0]-15 , hexPos[3][1]+3);
-    context.fillText('과일향', hexPos[4][0]-15, hexPos[4][1]);
-    context.fillText('맥아향', hexPos[5][0]-15, hexPos[5][1]);
-</script>
-
 {% endblock %}
