@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/detail.css' %}">
+<style>
+    td{
+        padding: 4px;
+        border: 1px solid #000000;
+    }
+    #text{
+        height:100%;
+        margin:0 auto;
+    }
+</style>
+<div style="text-align: center;">
+    <table style="border-collapse: collapse; margin: 0 auto;">
+        <tr>
+            <td>
+                <div id=title style="flex:1; padding:4px;">
+                    {{ target_beer.beer_name }}
+                </div>
+            </td>
+            <td>
+                {% if target_beer.rating %}
+                <div class='star-rating'>
+                    <span id="star_blue"></span>
+                </div>
+                <script>
+                    var ratingPercent = 20 * {{ target_beer.rating }};
+                    document.getElementById('star_blue').style.width = ratingPercent + '%';
+                </script>
+                    <br>
+                    {{ target_beer.rating }} / 5.0
+                {% else %}
+                    <h5>
+                        평점이 없습니다
+                    </h5>
+                {% endif %}
+            </td>
+            <td>
+                <p>작성자: {{ target_beer.writer }}</p>
+            </td>
+        </tr>
+        <tr>
+            <td >
+                <div id=picture style="padding: 4px">
+                    <img src="{{ target_beer.picture.url }}" alt="맥주 사진" id="profile">
+                </div>
+            </td>
+            <td>
+                <ul>
+                    <li>sweet :
+                        {% if target_beer.sweet %}
+                            {{ target_beer.sweet }} / 5.0
+                        {% else %}
+                            값이 없습니다
+                        {% endif %}
+                    </li>
+                    <li>sour :
+                        {% if target_beer.sour %}
+                            {{ target_beer.sour }} / 5.0
+                        {% else %}
+                            값이 없습니다
+                        {% endif %}
+                    </li>
+                    <li>bitter :
+                        {% if target_beer.bitter %}
+                            {{ target_beer.bitter }} / 5.0
+                        {% else %}
+                            값이 없습니다
+                        {% endif %}
+                    </li>
+                    <li>hoppy :
+                        {% if target_beer.hoppy %}
+                            {{ target_beer.hoppy }} / 5.0
+                        {% else %}
+                            값이 없습니다
+                        {% endif %}
+                    </li>
+                    <li>fruity :
+                        {% if target_beer.fruity %}
+                            {{ target_beer.fruity }} / 5.0
+                        {% else %}
+                            값이 없습니다
+                        {% endif %}
+                    </li>
+                    <li>malty :
+                        {% if target_beer.malty %}
+                            {{ target_beer.malty }} / 5.0
+                        {% else %}
+                            값이 없습니다
+                        {% endif %}
+                    </li>
+                </ul>
+            </td>
+            <td >
+                시각화
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id=location style="flex:1; padding: 4px;">
+                    마신 장소: {{ target_beer.place }}
+                </div>
+                <div style="position:relative;z-index:1; width:100%">
+                    {% if target_beer.lat %}
+                        {% include 'scrapapp/detail_map.html' with target_beer=target_beer %}
+                    {% else %}
+                        장소가 없습니다
+                    {% endif %}
+                </div>
+            </td>
+            <td colspan="3">
+                <div id="text" style="text-align: left">
+                    {{ target_beer.context }}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" style="border: 0px solid #000000;">
+                {% if user == target_beer.writer %}
+                <a href="{% url 'scrapapp:update' pk=target_beer.pk %}">
+                    수정
+                </a>
+                <a href="{% url 'scrapapp:delete' pk=target_beer.pk %}">
+                    삭제
+                </a>
+            {% endif %}
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+{% endblock %}

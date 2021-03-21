@@ -34,7 +34,7 @@ class ScrapCreateView(CreateView):
 class ScrapDetailView(DetailView):
     model = Scrap
     context_object_name = 'target_beer'
-    template_name = 'scrapapp/detail.html'
+    template_name = 'scrapapp/detail_table.html'
 
 
 @method_decorator(HAS_OWNERSHIP, 'get')
