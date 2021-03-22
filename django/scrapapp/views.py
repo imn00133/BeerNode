@@ -34,7 +34,13 @@ class ScrapCreateView(CreateView):
 class ScrapDetailView(DetailView):
     model = Scrap
     context_object_name = 'target_beer'
-    template_name = 'scrapapp/detail.html'
+
+    def get_template_names(self, *args, **kwargs):
+        scrap = Scrap.objects.get(pk=self.kwargs['pk'])
+        if scrap is not None:
+            return ['scrapapp/detail.html']
+        else:
+            return ['scrapapp/detail_deleted.html']
 
 
 @method_decorator(HAS_OWNERSHIP, 'get')
