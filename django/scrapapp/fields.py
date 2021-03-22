@@ -1,5 +1,10 @@
-from django.db.models.fields.files import ImageFieldFile
-from django.forms import ImageField
+from django.conf import settings
+from django.db.models.fields.files import ImageFieldFile, ImageField
+
+__all__ = (
+    'DefaultStaticImageField',
+    'DefaultStaticImageFieldFile',
+)
 
 DEFAULT_IMAGE_PATH = 'image/no_img.png'
 
@@ -10,7 +15,11 @@ class DefaultStaticImageFieldFile(ImageFieldFile):
         try:
             return super().url
         except ValueError:
-            return DEFAULT_IMAGE_PATH
+            from django.contrib.staticfiles.storage import staticfiles_storage
+            from django.contrib.staticfiles import finders
+            if finders.find(self.field.static_image_path):
+                return staticfiles_storage.url(self.field.static_image_path)
+            return staticfiles_storage.url(DEFAULT_IMAGE_PATH)
 
 
 class DefaultStaticImageField(ImageField):
@@ -19,6 +28,5 @@ class DefaultStaticImageField(ImageField):
     def __init__(self, *args, **kwargs):
         self.static_image_path = kwargs.pop(
             'default_image_path',
-            getattr(DEFAULT_IMAGE_PATH)
-        )
+            getattr(settings, 'DEFAULT_IMAGE_PATH', DEFAULT_IMAGE_PATH))
         super().__init__(*args, **kwargs)

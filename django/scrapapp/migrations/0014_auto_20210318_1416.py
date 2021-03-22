@@ -2,7 +2,8 @@
 
 import django.core.validators
 from django.db import migrations, models
-import django_fields.fields
+
+import scrapapp
 
 
 class Migration(migrations.Migration):
@@ -35,7 +36,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='scrap',
             name='picture',
-            field=django_fields.fields.DefaultStaticImageField(blank=True, null=True, upload_to='scrap/', verbose_name='사진'),
+            field=scrapapp.fields.DefaultStaticImageField(blank=True, null=True, upload_to='scrap/', verbose_name='사진'),
         ),
         migrations.AlterField(
             model_name='scrap',
