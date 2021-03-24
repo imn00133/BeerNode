@@ -2,13 +2,15 @@
 {% load static %}
 {% load bootstrap4 %}
 {% block content %}
-<div>
+
+<div style="text-align:center;">
+    존재하지 않는 페이지입니다.
 </div>
-<script>
-    window.setTimeout(function(){
-        alert('Error...404...');
-        var link = 'http://127.0.0.1:8000/';
-        location.href= link;
-    }, 200);
-</script>
+<br>
+<div style="text-align:center;">
+    <a href="/">
+        홈으로 돌아가기
+    </a>
+</div>
+
 {% endblock %}
