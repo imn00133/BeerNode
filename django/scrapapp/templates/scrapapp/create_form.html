@@ -32,6 +32,13 @@
         width: 100%;
 
     }
+    .num{
+        width: 4rem;
+        text-align: center;
+    }
+    #visualize{
+        width: 250px;
+    }
 </style>
 
 <div style="text-align:center; margin: 4rem auto">
@@ -43,19 +50,19 @@
         <table border="1">
             <tr>
                 <th>{{ form.beer_name.label }}</th>
-                <td style="text-align: left;">
+                <td colspan="3"; style="text-align: left;">
                     {{ form.beer_name }}
                 </td>
             </tr>
             <tr>
                 <th>{{ form.date.label }}</th>
-                <td style="text-align: left;">
+                <td colspan="3"; style="text-align: left;">
                     {{ form.date }}
                 </td>
             </tr>
             <tr>
                 <th>{{ form.place.label }}</th>
-                <td style="text-align: left;">
+                <td colspan="3"; style="text-align: left;">
                     <input type="text"
                            name="{{ form.place.name }}"
                            id="get_placename"
@@ -85,63 +92,222 @@
             </tr>
             <tr>
                 <th>{{ form.context.label }}</th>
-                <td style="padding:2px;padding-top:4px;">
+                <td colspan="3"; style="padding:2px;padding-top:4px;">
                     {{ form.context }}
                 </td>
             </tr>
             <tr>
                 <th>{{ form.rating.label }}</th>
-                <td>
+                <td colspan="3";>
                     {{ form.rating }}
                 </td>
             </tr>
             <tr>
                 <th>{{ form.sweet.label }}</th>
+                <td class="num">
+                    <font id="show_sweet">3</font><font> / 5</font>
+                </td>
                 <td>
                     {{ form.sweet }}
+                </td>
+                <td rowspan="6" id="visualize">
+                    <canvas id="myCanvas" width="250" height="250"></canvas>
                 </td>
             </tr>
             <tr>
                 <th>{{ form.sour.label }}</th>
+                <td class="num">
+                    <font id="show_sour">3</font><font> / 5</font>
+                </td>
                 <td>
                     {{ form.sour }}
                 </td>
             </tr>
             <tr>
                 <th>{{ form.bitter.label }}</th>
+                <td class="num">
+                    <font id="show_bitter">3</font><font> / 5</font>
+                </td>
                 <td>
                     {{ form.bitter }}
                 </td>
             </tr>
             <tr>
                 <th>{{ form.hoppy.label }}</th>
+                <td class="num">
+                    <font id="show_hoppy">3</font><font> / 5</font>
+                </td>
                 <td>
                     {{ form.hoppy }}
                 </td>
             </tr>
             <tr>
                 <th>{{ form.fruity.label }}</th>
+                <td class="num">
+                    <font id="show_fruity">3</font><font> / 5</font>
+                </td>
                 <td>
                     {{ form.fruity }}
                 </td>
             </tr>
             <tr>
                 <th>{{ form.malty.label }}</th>
+                <td class="num">
+                    <font id="show_malty">3</font><font> / 5</font>
+                </td>
                 <td>
                     {{ form.malty }}
                 </td>
             </tr>
             <tr>
                 <th>{{ form.picture.label }}</th>
-                <td>
+                <td colspan="3";>
                     {{ form.picture }}
                 </td>
             </tr>
         </table>
         <input type="submit" class="btn btn-dark rounded-pill col-6 mt-3">
     </form>
+
+    <script>
+    var canvas = document.getElementById('myCanvas');
+    var context = canvas.getContext('2d');
+    var centerX = canvas.width / 2;
+    var centerY = canvas.height / 2;
+    var radius = 85;
+    var copy = 6;
+
+    var hex_width = 2;
+    var hex_color = '#8f8580';
+    var radius_width = 1;
+    var radius_color = '#414141';
+    var data_width = 4;
+    var data_color = '#ba9800';
+    var data_fillcolor = '#f0c400';
+    var text_color = '#000000';
+
+    var data_sample = [3,3,3,3,3,3];
+    var get_from = ['sweet','sour', 'bitter', 'hoppy', 'fruity', 'malty'];
+    var max_rate = 5;
+
+    function show_num(id){
+        var target_id = 'id_'+id;
+        var target_id_show = 'show_'+id;
+        var target_element = document.getElementById(target_id);
+        var target_show = document.getElementById(target_id_show);
+        target_element.oninput = function(){
+            target_show.innerHTML = target_element.value;
+            for(var i = 0; i < get_from.length; i++){
+                if(get_from[i] === id){
+                    data_sample[i] = target_element.value;
+                }
+            }
+            real_time_draw();
+        };
+    }
+
+    function hex(context, centerX, centerY, radius, shape){
+        var hexPos=[[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]];
+        for(var i = 0; i < hexPos.length; i++){
+            hexPos[i] = [centerX + radius * Math.cos(Math.PI * i / 3),
+                         centerY + radius * Math.sin(Math.PI * i / 3)];
+        }
+        if(shape === 0){
+            context.beginPath();
+            context.moveTo(hexPos[0][0], hexPos[0][1]);
+            for(i = 0; i < hexPos.length; i++){
+                var pos = hexPos[i];
+                context.lineTo(pos[0], pos[1]);
+            }
+            context.lineTo(hexPos[0][0], hexPos[0][1]);
+            context.lineWidth = hex_width;
+            context.strokeStyle = hex_color;
+            context.lineCap = 'round';
+            context.lineJoin ='round';
+            context.stroke();
+        }
+        if(shape === 1){
+            context.beginPath();
+            for(i = 0; i<hexPos.length; i++){
+                var pos = hexPos[i];
+                context.moveTo(centerX, centerY);
+                context.lineTo(pos[0], pos[1]);
+            }
+            context.lineWidth = radius_width;
+            context.strokeStyle = radius_color;
+            context.lineCap = 'round';
+            context.lineJoin = 'round';
+            context.stroke();
+        }
+    }
+
+    function layered_hex(context, centerX, centerY, radius, copy){
+        hex(context, centerX, centerY, radius, 1);
+        hex(context,centerX, centerY, 1, 0);
+        for(var i = 1; i < copy; i++){
+            hex(context, centerX, centerY, radius / (copy-1) * i, 0);
+        }
+    }
+
+    function data_hex(context, centerX, centerY, radius, dataset, fill){
+        var convert_data = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]];
+        for(i = 0; i < dataset.length; i++){
+            radius_convert = radius * dataset[i] / max_rate;
+            convert_data[i] = [centerX + radius_convert * Math.cos(Math.PI * i / 3),
+                               centerY + radius_convert * Math.sin(Math.PI * i / 3)];
+        }
+        context.beginPath();
+        context.moveTo(convert_data[0][0], convert_data[0][1]);
+        for(i = 0; i < convert_data.length; i++){
+            var pos = convert_data[i];
+            context.lineTo(pos[0], pos[1]);
+        }
+        context.lineTo(convert_data[0][0], convert_data[0][1]);
+        context.lineWidth = data_width;
+        context.strokeStyle = data_color;
+        context.lineCap = 'round';
+        context.lineJoin ='round';
+        if( fill === 1){
+            context.fillStyle = data_fillcolor;
+            context.fill();
+        }
+        context.stroke();
+    }
+
+    function real_time_draw(){
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        data_hex(context, centerX, centerY, radius, data_sample, 1);
+        layered_hex(context, centerX, centerY, radius, copy);
+        data_hex(context, centerX, centerY, radius, data_sample, 0);
+
+        var hexPos = [0,0,0,0,0,0];
+        for(var i = 0; i < hexPos.length; i++){
+                hexPos[i] = [centerX + (radius + 10) * Math.cos(Math.PI * i / 3),
+                             centerY + (radius + 10) * Math.sin(Math.PI * i / 3)];
+        }
+
+        context.font = '10px malgun gothic';
+        context.fillStyle = text_color;
+        context.fillText('단맛', hexPos[0][0]-5, hexPos[0][1]+3  );
+        context.fillText('신맛', hexPos[1][0]-10, hexPos[1][1]+7);
+        context.fillText('쓴맛', hexPos[2][0]-10, hexPos[2][1]+7);
+        context.fillText('홉향', hexPos[3][0]-15 , hexPos[3][1]+3);
+        context.fillText('과일향', hexPos[4][0]-15, hexPos[4][1]);
+        context.fillText('맥아향', hexPos[5][0]-15, hexPos[5][1]);
+    }
+
+    window.setTimeout(function(){
+        show_num('sweet');
+        show_num('sour');
+        show_num('bitter');
+        show_num('hoppy');
+        show_num('fruity');
+        show_num('malty');
+        real_time_draw();
+    },200);
+    </script>
 </div>
-<hr>
+
 
 {% endblock %}
 
