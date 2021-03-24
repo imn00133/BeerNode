@@ -36,11 +36,14 @@ class ScrapDetailView(DetailView):
     context_object_name = 'target_beer'
 
     def get_template_names(self, *args, **kwargs):
-        scrap = Scrap.objects.get(pk=self.kwargs['pk'])
-        if scrap is not None:
-            return ['scrapapp/detail.html']
-        else:
-            return ['scrapapp/detail_deleted.html']
+        try:
+            scrap = Scrap.objects.get(pk=self.kwargs['pk'])
+            if scrap is not None:
+                return ['scrapapp/detail.html']
+            else:
+                return ['scrapapp/detail_deleted.html']
+        except scrap.DoesNotExist:
+            return ['scrapapp/test.html']
 
 
 @method_decorator(HAS_OWNERSHIP, 'get')
