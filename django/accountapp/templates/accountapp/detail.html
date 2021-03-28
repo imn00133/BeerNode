@@ -11,6 +11,8 @@
                 <h2>
                 {% if target_user.profile.nickname %}
                     {{ target_user.profile.nickname }}
+                {% else %}
+                    {{ target_user.username }}
                 {% endif %}
                 </h2>
                 {% if target_user.profile.image %}
