@@ -1,6 +1,8 @@
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.http import HttpResponseRedirect
 
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
@@ -15,8 +17,15 @@ has_ownership = [account_ownership_required, login_required]
 class AccountCreateView(CreateView):
     model = User
     form_class = UserCreationForm
-    success_url = reverse_lazy('test_home')
     template_name = 'accountapp/create.html'
+
+    def form_valid(self, form):
+        form.save()
+        username = self.request.POST['username']
+        password = self.request.POST['password1']
+        user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'],)
+        login(self.request, user)
+        return HttpResponseRedirect(reverse_lazy('profileapp:create'))
 
 
 class AccountDetailView(DetailView):
