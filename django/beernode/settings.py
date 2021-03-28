@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'debug_toolbar',
     'django_filters',
+    'django_extensions',
     # locals apps
     'scraplistapp',
     'accountapp',
