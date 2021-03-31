@@ -1,13 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div>
+    <div style="text-align: center;">
         <div>
             <p>
                 {{ target_user.date_joined }}
             </p>
 
             {% if target_user.profile %}
+                <img src="{{ target_user.profile.image.url }}" alt="프로필 사진"
+                    style="
+                    width: 9rem;
+                    height: 9rem;
+                    object-fit: scale-down;
+                    border: 1px black solid;
+                    border-radius: 0.5rem;">
                 <h2>
                 {% if target_user.profile.nickname %}
                     {{ target_user.profile.nickname }}
@@ -15,13 +22,6 @@
                     {{ target_user.username }}
                 {% endif %}
                 </h2>
-                {% if target_user.profile.image %}
-                    <img src="{{ target_user.profile.image.url }}" alt="">
-                {% else %}
-                    <p>
-                        사진이 없습니다
-                    </p>
-                {% endif %}
                 {% if target_user.profile.message %}
                     <p>
                         {{ target_user.profile.message }}
