@@ -27,6 +27,7 @@ urlpatterns = [
     path('account/', include('accountapp.urls')),
     path('profile/', include('profileapp.urls')),
     path('', TemplateView.as_view(template_name='test_home.html'), name='test_home'),
+    path('home', TemplateView.as_view(template_name='homepage_main.html'), name='home_main'),
 ]
 
 if settings.DEBUG:
