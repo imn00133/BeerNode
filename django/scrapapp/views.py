@@ -28,7 +28,7 @@ class ScrapCreateView(CreateView):
 
     def get_success_url(self):
         user_id = self.request.user.id
-        return reverse_lazy('scraplistapp:list', kwargs={'pk': user_id})
+        return reverse_lazy('listapp:list', kwargs={'pk': user_id})
 
 
 class ScrapDetailView(DetailView):
@@ -58,5 +58,5 @@ class ScrapDeleteView(DeleteView):
 
     def get_success_url(self):
         user_id = self.request.user.id
-        return reverse_lazy('scraplistapp:list', kwargs={'pk': user_id})
+        return reverse_lazy('listapp:list', kwargs={'pk': user_id})
 

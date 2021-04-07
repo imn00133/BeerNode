@@ -29,7 +29,7 @@
             <h1>Scraplistapp 테스트</h1>
             <span>
                 {% if user.pk %}
-                    <a href="{% url 'scraplistapp:list' pk=user.pk %}">리스트 보기</a>
+                    <a href="{% url 'listapp:list' pk=user.pk %}">리스트 보기</a>
                 {% endif %}
             </span>
         </div>

@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 
-from scraplistapp.models import Scraplist
+from listapp.models import Scraplist
 
 
 class ScraplistCreationForm(ModelForm):
