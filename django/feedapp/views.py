@@ -3,25 +3,11 @@ from django.shortcuts import render
 # Create your views here.
 from django.views.generic import ListView
 
+from feedapp.filters import ScrapFilter
 from scrapapp.models import Scrap
 
-from feedapp.filters import ScrapFilter
 
-# global one
-
-
-def oneline(request):
-    scraps = Scrap.objects
-    return render(request, 'listapp/list_oneline.html', {'scraps':scraps})
-
-
-# class ScraplistDetailView(DetailView):
-#     model = Scraplist
-#     context_object_name = 'target_scraplist'
-#     template_name = 'listapp/list.html'
-
-
-class ScraplistListView(ListView):
+class ScrapListView(ListView):
     model = Scrap
     context_object_name = 'scrap_list'
     template_name = 'listapp/list.html'
