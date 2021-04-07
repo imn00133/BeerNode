@@ -10,7 +10,7 @@ from listapp.models import Scraplist
 
 from .filters import ScrapFilter
 
-global one
+# global one
 
 
 def oneline(request):
@@ -18,10 +18,10 @@ def oneline(request):
     return render(request, 'listapp/list_oneline.html', {'scraps':scraps})
 
 
-class ScraplistDetailView(DetailView):
-    model = Scraplist
-    context_object_name = 'target_scraplist'
-    template_name = 'listapp/list.html'
+# class ScraplistDetailView(DetailView):
+#     model = Scraplist
+#     context_object_name = 'target_scraplist'
+#     template_name = 'listapp/list.html'
 
 
 class ScraplistListView(ListView):
