@@ -1,10 +1,9 @@
 from django.urls import path
-from django.views.generic import TemplateView
 
-from listapp.views import oneline, ScraplistListView
+from feedapp.views import ScrapListView
 
 app_name = "feedapp"
 
 urlpatterns = [
-    path('feed/<int:pk>', ScraplistListView.as_view(), name='list'),
+    path('feed/<int:pk>', ScrapListView.as_view(), name='feed'),
 ]
