@@ -23,6 +23,10 @@
 
 
     }
+    img{
+        width: 5rem;
+        height: 5rem;
+    }
     </style>
     <div style="display: flex; justify-content: center; align-items: center; ">
         <div id="logo_box" style="flex: 5; ">
@@ -55,8 +59,13 @@
                 <a href="{% url 'accountapp:create' %}">계정 생성</a>
             </div>
             {% else %}
-            <div style="margin: 1rem;">
-                <strong>{{ user.username }}</strong>
+            <div style="margin: 1rem; display:flex; justify-content: center; align-items: center; ">
+                {% if user.profile.image.url %}
+                <span style="border: 1px solid; margin: 0.4rem;"><img src="{{ user.profile.image.url }}" alt="" style="object-fit: scale-down;"></span>
+                {% else %}
+                <span style="border: 1px solid; margin: 0.4rem;"><img src="/static/image/no_img.png" alt="" style="object-fit: scale-down;"></span>
+                {% endif %}
+                <span style="margin:0.4rem;"><strong>{{ user.username }}</strong></span>
             </div>
             <div style="margin: 0.4rem;">
                 <span style="margin-right: 0.6rem;">
