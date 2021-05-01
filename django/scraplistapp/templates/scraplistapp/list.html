@@ -62,5 +62,26 @@
         {% include 'scraplistapp/list_oneline.html' with object_list=object_list %}
     </div>
 
-    <script src="{% static 'javascript/magicgrid.js' %}"}></script>
+<script src="{% static 'javascript/magicgrid.js' %}"}></script>
+<div style="text-align: center;
+            display:flex;
+            flex-direction:row;
+            justify-content: center;">
+    {% if page_obj.has_previous %}
+    <a href="{% url 'scraplistapp:list' pk=user.pk %}?page={{ page_obj.previous_page_number }}"
+       class="btn btn-secondary rounded-pill">
+        {{ page_obj.previous_page_number }}
+    </a>
+    {% endif %}
+    <a href="{% url 'scraplistapp:list' pk=user.pk %}?page={{ page_obj.number }}"
+       class="btn btn-secondary rounded-pill">
+        {{ page_obj.number }}
+    </a>
+    {% if page_obj.has_next %}
+    <a href="{% url 'scraplistapp:list' pk=user.pk %}?page={{ page_obj.next_page_number }}"
+       class="btn btn rounded-pill">
+        {{ page_obj.next_page_number }}
+    </a>
+    {% endif %}
+</div>
 {% endblock %}
