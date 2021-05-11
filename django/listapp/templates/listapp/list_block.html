@@ -1,8 +1,8 @@
 <div class="container">
-    {% for scrap in filter.qs %}
+    {% for object in filter.qs %}
         <div>
-            <a href="{% url 'scrapapp:detail' pk=scrap.pk %}">
-                {% include 'snippets/card_blocklist.html' with scrap=scrap %}
+            <a href="{{ object.get_absolute_url }}">
+                {% include 'snippets/card_blocklist.html' with object=object %}
             </a>
         </div>
     {% endfor %}

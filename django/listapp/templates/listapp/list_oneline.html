@@ -7,11 +7,11 @@
         <th scope="col">context</th>
         <th scope="col">created date</th>
     </thread>
-    {% if scrap_list %}
+    {% if object_list %}
         <script>
             var i=1;
         </script>
-        {% for scrap in filter.qs %}
+        {% for object in filter.qs %}
             <tbody>
                 <tr>
                     <th scope="row">
@@ -20,11 +20,11 @@
                              i++;
                         </script>
                     </th>
-                    <td><a href="{% url 'scrapapp:detail' pk=scrap.pk %}">{{ scrap.beer_name }}</a></td>
-                    <td>{{ scrap.date }}</td>
-                    <td>{{ scrap.place }}</td>
-                    <td>{{ scrap.context }}</td>
-                    <td>{{ scrap.create_at }}</td>
+                    <td><a href="{{ object.get_absolute_url }}">{{ object.beer_name }}</a></td>
+                    <td>{{ object.date }}</td>
+                    <td>{{ object.place }}</td>
+                    <td>{{ object.context }}</td>
+                    <td>{{ object.create_at }}</td>
                 </tr>
             </tbody>
         {% endfor %}
