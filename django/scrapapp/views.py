@@ -26,10 +26,6 @@ class ScrapCreateView(CreateView):
         temp.writer = self.request.user
         return super().form_valid(form)
 
-    def get_success_url(self):
-        user_id = self.request.user.id
-        return reverse_lazy('feedapp:feed', kwargs={'pk': user_id})
-
 
 class ScrapDetailView(DetailView):
     model = Scrap
@@ -45,9 +41,6 @@ class ScrapUpdateView(UpdateView):
     form_class = ScrapCreationForm
     template_name = 'scrapapp/update.html'
 
-    def get_success_url(self):
-        return reverse('scrapapp:detail', kwargs={'pk': self.object.pk})
-
 
 @method_decorator(HAS_OWNERSHIP, 'get')
 @method_decorator(HAS_OWNERSHIP, 'post')
@@ -59,4 +52,3 @@ class ScrapDeleteView(DeleteView):
     def get_success_url(self):
         user_id = self.request.user.id
         return reverse_lazy('feedapp:feed', kwargs={'pk': user_id})
-

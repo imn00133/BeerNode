@@ -27,6 +27,7 @@ urlpatterns = [
     path('profile/', include('profileapp.urls')),
     path('feed/', include('feedapp.urls')),
     path('', TemplateView.as_view(template_name='test_home.html'), name='test_home'),
+    path('home', TemplateView.as_view(template_name='homepage_main.html'), name='home_main'),
 ]
 
 if settings.DEBUG:

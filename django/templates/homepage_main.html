@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+{% include 'head.html' %}
+
+<body>
+    <style>
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    #main_logo{
+        text-align: center;
+        font-size: 4rem;
+        margin-top: 1.2rem;
+        margin-bottom: 1.5rem;
+        font-family: 'Arvo', serif;
+    }
+    #login_box{
+        text-align: center;
+        margin: 1.5rem;
+
+
+    }
+    img{
+        width: 5rem;
+        height: 5rem;
+    }
+    </style>
+    <div style="display: flex; justify-content: center; align-items: center; ">
+        <div id="logo_box" style="flex: 5; ">
+            <h1 id="main_logo" style="height: 100%;">
+                <a href="/">
+                    BeerNode
+                </a>
+            </h1>
+            <div id="nav_box" style="display: flex; justify-content: center; align-items: center; ">
+                <span style="margin-left: 1rem; maring-right: 1rem;">
+                    새소식
+                </span>
+                <span style="margin-left: 1rem; maring-right: 1rem;">
+                    최근 글
+                </span>
+                <span style="margin-left: 1rem; maring-right: 1rem;">
+                    나중에 뭔가
+                </span>
+                <span style="margin-left: 1rem; maring-right: 1rem;">
+                    쓸일이 있겠지
+                </span>
+            </div>
+        </div>
+        <div id="login_box" style="flex: 1; border: 1px solid;">
+            {% if not user.is_authenticated %}
+            <div style="border: 1px solid; flex: 1; margin: 1rem;">
+                <a href="{% url 'accountapp:login' %}?next={{ request.path }}">로그인</a>
+            </div>
+            <div style="border: 1px solid; flex: 1; margin: 1rem;">
+                <a href="{% url 'accountapp:create' %}">계정 생성</a>
+            </div>
+            {% else %}
+            <div style="margin: 1rem; display:flex; justify-content: center; align-items: center; ">
+                {% if user.profile.image.url %}
+                <span style="border: 1px solid; margin: 0.4rem;"><img src="{{ user.profile.image.url }}" alt="" style="object-fit: scale-down;"></span>
+                {% else %}
+                <span style="border: 1px solid; margin: 0.4rem;"><img src="/static/image/no_img.png" alt="" style="object-fit: scale-down;"></span>
+                {% endif %}
+                <span style="margin:0.4rem;"><strong>{{ user.username }}</strong></span>
+            </div>
+            <div style="margin: 0.4rem;">
+                <span style="margin-right: 0.6rem;">
+                    <a href="{% url 'accountapp:detail' pk=user.pk %}">내 정보</a>
+                </span>
+                <span>
+                    <a href="{% url 'accountapp:logout' %}?next={{ request.path }}">로그아웃</a>
+                </span>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div>
+        <hr>
+    </div>
+    <div style="margin: 1.5rem; border: 1px solid; padding: 1rem;">
+        <p>BeerNode 새소식</p>
+        <p>과연 게시글을 끌어올 것인가 관리자가 한땀 한땀 쓸 것인가</p>
+    </div>
+    <div style="margin: 1.5rem; border: 1px solid; padding: 1rem;">
+        <p>최근 누군가의 게시글</p>
+        <p>과연 새로운 글의 업데이트 주기는 얼마나 될 것인가</p>
+    </div>
+</body>
+
+</html>
