@@ -1,5 +1,5 @@
 <div class="container">
-    {% for object in filter.qs %}
+    {% for object in object_list.qs %}
         <div>
             <a href="{{ object.get_absolute_url }}">
                 {% include 'snippets/card_blocklist.html' with object=object %}
