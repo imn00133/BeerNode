@@ -7,7 +7,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('scrapapp', '0004_scrap_date'),
-        ('scraplistapp', '0002_auto_20210204_0146'),
+        ('listapp', '0002_auto_20210204_0146'),
     ]
 
     operations = [

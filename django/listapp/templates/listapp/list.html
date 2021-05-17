@@ -34,14 +34,9 @@
         }
     </style>
     <form method="get">
-        {{ filter.form }}
+        {{ object_list.form }}
         <button type="submit" class="btn btn-primary">Search</button>
     </form>
-    <div style="text-align: center">
-        <a href="{% url 'scrapapp:create' %}">
-            스크랩 생성
-        </a>
-    </div>
     <div>
         <div class="nav">
             <input type="button" value="미리보기" onclick="
@@ -56,10 +51,10 @@
         </div>
     </div>
     <div class="block" style="display: block">
-        {% include 'scraplistapp/list_block.html' with scrap=scrap %}
+        {% include 'listapp/list_block.html' with object=object %}
     </div>
     <div class="oneline" style="display: none">
-        {% include 'scraplistapp/list_oneline.html' with object_list=object_list %}
+        {% include 'listapp/list_oneline.html' with object=object %}
     </div>
 
     <script src="{% static 'javascript/magicgrid.js' %}"}></script>

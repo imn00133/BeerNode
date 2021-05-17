@@ -1,9 +1,0 @@
-<div class="container">
-    {% for scrap in filter.qs %}
-        <div>
-            <a href="{% url 'scrapapp:detail' pk=scrap.pk %}">
-                {% include 'snippets/card_blocklist.html' with scrap=scrap %}
-            </a>
-        </div>
-    {% endfor %}
-</div>
