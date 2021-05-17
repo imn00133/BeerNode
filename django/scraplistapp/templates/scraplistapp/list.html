@@ -42,25 +42,49 @@
             스크랩 생성
         </a>
     </div>
-    <div>
-        <div class="nav">
-            <input type="button" value="미리보기" onclick="
-                document.querySelector('div.oneline').style.display = 'none';
-                document.querySelector('div.block').style.display = 'block';
-                magicGrid.positionItems();
-            ">
-            <input type="button" value="자세히" onclick="
-                document.querySelector('div.oneline').style.display = 'block';
-                document.querySelector('div.block').style.display = 'none';
-            ">
-        </div>
+    <div style="text-align: center">
+        <span>
+            <select name="display" onchange="selectionChanged(this)">
+                <option value="block" selected="selected">미리보기</option>
+                <option value="oneline">자세히</option>
+            </select>
+        </span>
+        <span>
+            <a href="{% url 'scraplistapp:block' %}">
+                <input type="button" value="보기">
+            </a>
+        </span>
+        <span>
+            <div id='result'>미리보기</div>
+        </span>
     </div>
-    <div class="block" style="display: block">
-        {% include 'scraplistapp/list_block.html' with scrap=scrap %}
-    </div>
-    <div class="oneline" style="display: none">
-        {% include 'scraplistapp/list_oneline.html' with object_list=object_list %}
-    </div>
+    <script>
+        var target='scraplistapp/list_block.html';
+        function selectionChanged(e) {
+            // 선택된 데이터의 텍스트값 가져오기
+            const text = e.options[e.selectedIndex].value;
+            target = 'scraplistapp/list_'+text+'.html';
 
+            // 선택한 텍스트 출력
+            document.getElementById('result').innerText
+                = target;
+
+        }
+    </script>
+
+<!--    {% include 'scraplistapp/list_block.html' %}-->
+    {% if scrap_list %}
+    <div class="container" style="text-align: center">
+        {% for scrap in scrap_list %}
+            <div>
+                <a href="{% url 'scrapapp:detail' pk=scrap.pk %}">
+                    {% include 'snippets/card_blocklist.html' with scrap=scrap %}
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
     <script src="{% static 'javascript/magicgrid.js' %}"}></script>
+
+    {% include 'snippets/pagination.html' with page_obj=page_obj %}
 {% endblock %}
