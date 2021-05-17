@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'profileapp',
     'scrapapp',
     'feedapp',
+    'beerapp',
 ]
 
 MIDDLEWARE = [
