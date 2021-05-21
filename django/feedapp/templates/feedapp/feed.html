@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content %}
+<p>잘 작동되는듯</p>
+{% include "listapp/list.html" with object=scrap %}
+
+{% endblock %}
