@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+{% include "accountapp/detail.html" with target_user=writer %}
+{% include "listapp/list.html" with object=scrap %}
+
+{% endblock %}
