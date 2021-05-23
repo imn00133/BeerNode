@@ -32,6 +32,11 @@ class ScrapDetailView(DetailView):
     context_object_name = 'target_beer'
     template_name = 'scrapapp/detail_table.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['flavor_list'] = ['sweet', 'sour', 'bitter', 'hoppy', 'fruity', 'malty']
+        return context
+
 
 @method_decorator(HAS_OWNERSHIP, 'get')
 @method_decorator(HAS_OWNERSHIP, 'post')
