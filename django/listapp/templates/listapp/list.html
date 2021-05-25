@@ -36,10 +36,9 @@
         {{ object_list.form }}
         <button type="submit" class="btn btn-primary">Search</button>
     </form>
-<!--    {% include 'scraplistapp/list_block.html' %}-->
     {% if scrap_list %}
     <div class="container" style="text-align: center">
-        {% for scrap in scrap_list %}
+        {% for scrap in scrap_list.scrap.all %}
             <div>
                 <a href="{% url 'scrapapp:detail' pk=scrap.pk %}">
                     {% include 'snippets/card_blocklist.html' with scrap=scrap %}
