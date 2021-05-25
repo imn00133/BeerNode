@@ -1,4 +1,3 @@
-{% extends 'base.html' %}
 {% load static %}
 {% load bootstrap4 %}
 
@@ -34,7 +33,7 @@
         }
     </style>
     <form method="get">
-        {{ filter.form }}
+        {{ object_list.form }}
         <button type="submit" class="btn btn-primary">Search</button>
     </form>
 <!--    {% include 'scraplistapp/list_block.html' %}-->

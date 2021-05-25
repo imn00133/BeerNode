@@ -32,7 +32,7 @@
                 <strong>{{ user.username }}</strong>
             </span>
             <span>
-                <a href="{% url 'accountapp:detail' pk=user.pk %}">내 정보</a>
+                <a href="{% url 'feedapp:feed' pk=user.pk %}">내 정보</a>
             </span>
             <span>
                 <a href="{% url 'accountapp:logout' %}?next={{ request.path }}">로그아웃</a>

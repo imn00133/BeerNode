@@ -2,6 +2,7 @@ from django.conf import settings
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.urls import reverse
+
 from default_image.fields import DefaultStaticImageField
 
 
@@ -24,4 +25,4 @@ class Scrap(models.Model):
     malty = models.IntegerField(null=True, validators=[MinValueValidator(1), MaxValueValidator(5)])
 
     def get_absolute_url(self):
-        return reverse('scrapapp:detail', args=[self.pk])
+        return reverse('scrapapp:detail', args=[self.id])

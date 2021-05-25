@@ -61,10 +61,11 @@ INSTALLED_APPS = [
     'django_filters',
     'django_extensions',
     # locals apps
-    'scraplistapp',
+    'listapp',
     'accountapp',
     'profileapp',
     'scrapapp',
+    'feedapp',
     'beerapp',
 ]
 
