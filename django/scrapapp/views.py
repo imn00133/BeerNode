@@ -34,7 +34,11 @@ class ScrapDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['flavor_list'] = ['sweet', 'sour', 'bitter', 'hoppy', 'fruity', 'malty']
+        flavor_list = ['sweet', 'sour', 'bitter', 'hoppy', 'fruity', 'malty']
+        flavor_dic = {}
+        for flavor in flavor_list:
+            flavor_dic[flavor] = getattr(Scrap.objects.get(pk=self.kwargs['pk']), flavor)
+        context['flavor_dic'] = flavor_dic
         return context
 
 

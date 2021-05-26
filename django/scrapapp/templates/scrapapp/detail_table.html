@@ -57,11 +57,11 @@
             </td>
             <td>
                 <ul>
-                    {% for flavor in flavor_list %}
+                    {% for flavor, score in flavor_dic.items %}
                     <li>
                         {{ flavor }} :
-                        {% if target_beer.flavor %}
-                            {{ target_beer.flavor }} / 5.0
+                        {% if score %}
+                            {{ score }} / 5.0
                         {% else %}
                             값이 없습니다
                         {% endif %}
