@@ -5,6 +5,6 @@
 {% block content %}
 
 {% include "accountapp/detail.html" with target_user=writer %}
-{% include "listapp/list.html" with object_list=scrap_list %}
+{% include "listapp/list.html" with filter=filter  %}
 
 {% endblock %}
