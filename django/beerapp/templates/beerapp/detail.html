@@ -29,16 +29,16 @@
                 </div>
             </td>
             <td>
-                {% if target_beer.rating %}
+                {% if rating %}
                 <div class='star-rating'>
                     <span id="star_blue"></span>
                 </div>
                 <script>
-                    var ratingPercent = 20 * {{ target_beer.rating }};
+                    var ratingPercent = 20 * {{ rating }};
                     document.getElementById('star_blue').style.width = ratingPercent + '%';
                 </script>
                     <br>
-                    {{ target_beer.rating }} / 5.0
+                    {{ rating }} / 5.0
                 {% else %}
                     <h5>
                         평점이 없습니다

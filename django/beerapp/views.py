@@ -13,7 +13,5 @@ class BeerDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         scrap_list = Scrap.objects.filter(beer_name=self.get_object().beer_name)
-        rating = scrap_list.aggregate(Avg('rating'))
-        print(scrap_list)
-        print(rating)
+        context['rating'] = scrap_list.aggregate(Avg('rating')).get('rating__avg')
         return context
