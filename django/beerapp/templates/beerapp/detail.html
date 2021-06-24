@@ -46,7 +46,8 @@
                 {% endif %}
             </td>
             <td>
-                <p>Brewery: {{ target_beer.brewery }}</p>
+                <p>Genre: {% if target_beer.genre %} {{ target_beer.genre }} {% else %} Unknown {% endif %}</p>
+                <p>ABV: {% if target_beer.abv %} {{ target_beer.abv }}% {% else %} Unknown {% endif %}</p>
             </td>
         </tr>
         <tr>
@@ -78,10 +79,12 @@
         <tr>
             <td>
                 <div id=location style="flex:1; padding: 4px;">
-                    뭔가 들어갈 곳
+                    <p>{% if target_beer.date %} Date: {{ target_beer.date }} {% endif %}</p>
+                    <p>Brewery: {% if target_beer.brewery %}{{ target_beer.brewery }}{% else %}Unknown{% endif %}</p>
+                    <p>{% if target_beer.country %} Country: {{ target_beer.country }} {% endif %}</p>
                 </div>
                 <div style="position:relative;z-index:1; width:100%">
-                    뭔가 들어갈 곳
+
                 </div>
             </td>
             <td colspan="3">
