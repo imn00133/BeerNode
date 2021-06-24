@@ -1,0 +1,71 @@
+header, body {
+    align-content: center;
+    text-align: center;
+    margin: 0px;
+}
+
+.main_content {
+    width: 65rem;
+    height: 100vh;
+    margin: auto;
+    background-color: white;
+}
+
+.pic_taste {
+    border: 1px red solid;
+    float: left;
+    width: 33%;
+    height: 80%;
+    align-content: center;
+}
+
+
+.star-rating {width:205px; margin:0 auto;}
+.star-rating,.star-rating span {display:block; height:39px; overflow:hidden; background:url(/static/rating.png)no-repeat; }
+.star-rating span{background-position:left bottom; line-height:0; vertical-align:top; }
+
+.content{
+    border: 1px blue solid;
+    float: left;
+    width: 66%;
+    height: 80%;
+}
+
+#profile {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+}
+
+#picture {
+    object-fit: scale-down;
+    border: 1px blue solid;
+    width: 20rem;
+    height: 20rem;
+    margin: 0.5rem auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+#taste {
+    margin-top: 2rem;
+}
+
+#title {
+    border: 1px red solid;
+    height: 10%;
+}
+
+#location {
+    border: 1px red solid;
+    height: 7%;
+    text-align: left;
+    vertical-align: middle;
+    font-size: 0.8rem;
+}
+
+#text {
+    border: 1px red solid;
+    height: 83%;
+}
